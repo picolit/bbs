@@ -1,13 +1,15 @@
 
 $base_color:#4e69a2;
-$base_color_label:#334c83;
+$base_btn_color_label:#334c83;
+
+$base_background_color: #e9eaed;
 
 $center-width:560px;
 
 $radius: 4px;
 
 body {
-  background-color: #e9eaed;
+  background-color: $base_background_color;
 }
 
 select {
@@ -29,9 +31,14 @@ label {
 }
 
 article {
-  background-color: #e9eaed;
+  background-color: white;
   margin-bottom: 10px;
+  padding-bottom: 10px;
   border-radius: 2px;
+}
+
+hr {
+  margin: 10px 0 10px 0;
 }
 
 .main>div {
@@ -61,6 +68,7 @@ article {
     display: table-cell;
     vertical-align: middle;
     input {
+      display: none;
       width: 200px
     }
   }
@@ -76,24 +84,13 @@ article {
   .right {
     width: 33%;
     display: table-cell;
+    text-align: right;
+    padding-right: 10px;
+    a {
+      color: white;
+      text-decoration: none;
+    }
   }
-}
-
-.header .search-box {
-  padding: 8px 70px;
-}
-
-.header .search-input {
-  float: left;
-  color: #141823;
-  font-size: 14px;
-  -webkit-font-smoothing: antialiased;
-  height: 18px;
-  line-height: 18.6px;
-  padding: 1px 5px 2px 0;
-  -webkit-border-radius: 0;
-  -webkit-appearance: none;
-  border-radius: 4px;
 }
 
 .left-content {
@@ -170,9 +167,8 @@ article {
 }
 
 .replay_box {
-  margin-top: 10px;
-  margin-left: 50px;
-  background-color: #b2dba1;
+  margin: 10px 10px 0 20px;
+  background-color: $base_background_color;
 }
 
 .article-title {
@@ -181,7 +177,7 @@ article {
 }
 
 .article-body {
-  font-size: 14px;
+  font-size: 13px;
   background-color: white;
   border-radius: $radius;
   margin: 10px 0px 10px 0px;
@@ -194,29 +190,40 @@ article {
   color: #7f7f7f;
   margin-top: 7px;
   font-size: 12px;
-}
-
-.article-footer .reply a {
-  color: #7f7f7f;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.article-footer .nice {
-  color: #7f7f7f;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.article-footer .nice-btn a {
-  color: #7f7f7f;
+  display: table;
+  a {
+    color: #7f7f7f;
+    text-decoration: none;
+    font-weight: bold;
+    display: table-cell;
+  }
+  .replay-btn {
+    display: table-cell;
+  }
+  .nice-box {
+    display: table-cell;
+    .nice {
+      color: #7f7f7f;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .nice-btn a {
+      color: #7f7f7f;
+    }
+  }
+  .nice-count {
+    display: table-cell;
+  }
+  .created-at {
+    display: table-cell;
+  }
 }
 
 /** post **/
 .post-form {
   background-color: white;
   border-radius: 4px;
-  padding: 0 0 5px 0;
+  //padding: 0 0 5px 0;
   margin-bottom: 10px;
   .my-form {
     margin-top: 0px;
@@ -225,13 +232,13 @@ article {
   .body {
     width: 100%;
     min-height: 63px;
-    height: 63px;
+    height: 100px;
     padding: 5px;
   }
   .interests-title {
     display: table-cell;
     width: 35px;
-    color: $base_color_label;
+    color: $base_btn_color_label;
     font-weight: bold;
   }
   .interests-parts {
@@ -266,6 +273,7 @@ article {
     border-radius: 2px;
     color: #fff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+    cursor: pointer;
   }
 }
 
@@ -355,4 +363,61 @@ article {
   vertical-align: middle;
   width: $center-width;
   height: 30px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+}
+//----- parts -----
+// リンク型ボタン
+.link-btn {
+  padding: 6px 12px;
+  cursor: pointer;
+  display: block;
+  background-color: $base_color;
+  color: white;
+  width: 100px;
+}
+//----- ヘルプ -----
+.help-content {
+  background-color: white;
+  width: 100%;
+  border-radius: $radius;
+  .title {
+    display: table-cell;
+    vertical-align: middle;
+    background-color: $base_color;
+    color: white;
+    width: $center-width;
+    height: 30px;
+    text-align: center;
+    border-radius: $radius;
+    font-weight: bold;
+  }
+  .help-box {
+    padding: 10px;
+    p {
+
+    }
+    ul {
+      padding-left: 5px;
+      list-style-type: square;
+      li {
+        display: block;
+      }
+    }
+  }
+  .back-box {
+    width: 100%;
+    display: table;
+    margin-top: 20px;
+    .btn {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }

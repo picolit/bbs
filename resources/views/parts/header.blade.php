@@ -5,5 +5,7 @@
     <div class="center">
         <p>Peach-X</p>
     </div>
-    <div class="right"></div>
+    <div class="right">
+        <a href="{!! route('articles.getHelp') !!}">ヘルプ</a>
+    </div>
 </div>

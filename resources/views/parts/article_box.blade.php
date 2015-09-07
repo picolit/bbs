@@ -7,7 +7,7 @@
     <div class="interest">
         <span class="on">興味</span>
 
-        @foreach($interests as $val)
+        @foreach($interestsList as $val)
             @if(in_array($val->name_tag, $row->interests->pluck('name_tag')->toArray()))
                 <a class="on" href="#">{{ $val->name }}</a>
             @else
@@ -28,34 +28,24 @@
         @endforeach
     </div>
     <div>
-        <table class="article-footer">
-            <tr>
-                <td style="width: 10%">
+        <div class="article-footer">
+                <div class="replay-btn">
                     @if(!$isReply)
                         <div class="reply"><a data-id="{{$row->id}}" href="javascript:void(0)">返 信</a></div>
                     @endif
-                </td>
-                <td style="width: 50%">
-                    <div class="nice">
+                </div>
+                <div class="nice-box">
+                    <div>
                         @inject('niceService', 'App\Service\NiceService')
                         @if($niceService->isNice($userId, $row->id))
                             <span class="nice-end-btn">エロいいね済</span>
-                            <span class="nice-count">{{ $row->nices->count() }}人がエロイイネと言っています。</span>
                         @else
-                            <span class="nice-btn">
-                                <a data-url="{{route('articles.postNice', ['id' => $row->id, 'user_id' => $userId])}}">
-                                    エロいいね！
-                                </a>
-                                <span class="nice-count">{{ $row->nices->count() }}人がエロイイネと言っています。</span>
-                            </span>
+                            <span class="nice-btn" data-id="{{$row->id}}"><a href="javascript:void(0)" data-url="{{route('articles.postNice', ['id' => $row->id, 'user_id' => $userId])}}">エロいいね！</a></span>
                         @endif
-
                     </div>
-                </td>
-                <td style="text-align: right">
-                    <div class="created-at">{{ $row->created_at}}</div>
-                </td>
-            </tr>
-        </table>
+                </div>
+                <div class="nice-count"><span>{{$row->nices->count()}}</span>人がエロイイネと言っています</div>
+                <div class="created-at"><div class="created-at">{{$row->created_at}}</div></div>
+        </div>
     </div>
 </div>

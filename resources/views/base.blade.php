@@ -57,6 +57,7 @@
         </ul>
     </div>
 </div>
+@include('parts/footer')
     <script>
 {{-- 解説: インラインのJavaScriptブロックです。各ページで追記ができます。--}}
 @section ('inline-script')

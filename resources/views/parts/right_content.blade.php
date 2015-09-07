@@ -1,5 +1,5 @@
 <div class="affiliate-list">
-    @foreach($affiliates as $row)
+    @foreach($affiliatesList as $row)
     <div>
         {!! $row !!}
     </div>

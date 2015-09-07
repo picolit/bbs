@@ -1,15 +1,27 @@
 $(document).ready(function(){
+
+    var replyId = $("input[name='parent_id']").val();
+    if (replyId !== '0') {
+        replyArticleShow(replyId);
+    }
+
     $(".nice-btn").on("click", function() {
-        var $nice = $(this);
         var $niceLink = $(this).find('a');
-        var $niceCnt = $(this).find('.nice-count');
+        var id = $(this).data('id');
+        var $article =  $('#id' + id);
+        var $articleFooter = $article.find('.article-footer');
+        var $niceBtn = $articleFooter.find('.nice-btn');
+        var $niceCount = $articleFooter.find('.nice-count span');
+
+        $niceBtn.text('エロイイネ済');
+        $niceCount.text(parseInt($niceCount.text()) + 1);
+
         $.ajax({
             type: "post",
             url: $niceLink.data('url'),
             data: "_token=" + $("input[name='_token']").attr('value'),
             success: function() {
-                var count = parseInt($niceCnt.text());
-                $nice.empty().add('<span>').text('エロいいね済 '+(count + 1)+'人がエロイイネと言っています。').css('color', '#7f7f7f');
+                // ignore
             }
         })
     });
@@ -23,33 +35,38 @@ $(document).ready(function(){
     $('.reply>a').on('click', function() {
         // 返信記事をトップへ表示
         var id = $(this).data("id");
-        var article = "#id" + id;
-        var $replyArticle = $("#reply-article");
-        $replyArticle.children().remove();
-        $replyArticle.append($(article).clone());
-
-        // hiddenのidを変更
-        $("input[name='parent_id']").val(id);
-
-        $('body, html').animate({ scrollTop: 0 }, 500);
-        $('.post-title').text("返 信");
-        $('.post-cancel-btn').show();
+        replyArticleShow(id);
     });
 
     // キャンセルボタン押下
     $('.post-cancel-btn').on('click', function() {
-        $('.post-title').text("新規投稿");
-        // hiddenのidを変更
-        $("input[name='parent_id']").val(0);
-        var $replyArticle = $("#reply-article");
-        $replyArticle.children().remove();
-        $(this).hide();
+        //$('.post-title').text("新規投稿");
+        //// hiddenのidを変更
+        //$("input[name='parent_id']").val(0);
+        //var $replyArticle = $("#reply-article");
+        //$replyArticle.children().remove();
+        //$(this).hide();
+        window.location = '/';
     });
 
     // 添付画像サムネイル
     document.getElementById('file1').addEventListener('change', handleFileSelect1, false);
     document.getElementById('file2').addEventListener('change', handleFileSelect2, false);
 });
+
+function replyArticleShow(id) {
+    var article = "#id" + id;
+    var $replyArticle = $("#reply-article");
+    $replyArticle.children().remove();
+    $replyArticle.append($(article).clone());
+
+    // hiddenのidを変更
+    $("input[name='parent_id']").val(id);
+
+    $('body, html').animate({ scrollTop: 0 }, 500);
+    $('.post-title').text("返 信");
+    $('.post-cancel-btn').show();
+}
 
 function handleFileSelect1(evt) {
     var f = evt.target.files[0]; // FileList object

@@ -41,7 +41,7 @@ class Article extends Model
      */
     public function selfJoin()
     {
-        return $this->hasMany('App\Orm\Article', 'res_id');
+        return $this->hasMany('App\Orm\Article', 'res_id')->orderBy('updated_at', 'desc');
     }
 
     /**
@@ -51,6 +51,16 @@ class Article extends Model
      */
     public function scopeSearch(Builder $query, array $conditions)
     {
+        // 見た目
+        if (isset($conditions['sex']) and $conditions['sex'] !== '0') {
+            $query->where('sex', $conditions['sex']);
+        }
+
+        // 年代
+        if (isset($conditions['age']) and $conditions['age'] !== '0') {
+            $query->where('age', $conditions['age']);
+        }
+
         // 都道府県
         if (isset($conditions['prefectures']) and $conditions['prefectures'] !== '0') {
             $query->where('prefectures', $conditions['prefectures']);

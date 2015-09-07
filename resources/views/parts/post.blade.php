@@ -19,19 +19,19 @@
         </div>
         <div>
             @if($errors->has('sex'))
-                {!! Form::select('sex', $sex, null, ['class' => 'error']) !!}
+                {!! Form::select('sex', $sexList, null, ['class' => 'error']) !!}
             @else
-                {!! Form::select('sex', $sex) !!}
+                {!! Form::select('sex', $sexList) !!}
             @endif
             @if($errors->has('age'))
-                {!! Form::select('age', $age, null, ['class' => 'error']) !!}
+                {!! Form::select('age', $ageList, null, ['class' => 'error']) !!}
             @else
-                {!! Form::select('age', $age) !!}
+                {!! Form::select('age', $ageList) !!}
             @endif
             @if($errors->has('prefectures'))
-                {!! Form::select('prefectures', $prefectures, null, ['class' => 'error']) !!}
+                {!! Form::select('prefectures', $prefecturesList, null, ['class' => 'error']) !!}
             @else
-                {!! Form::select('prefectures', $prefectures) !!}
+                {!! Form::select('prefectures', $prefecturesList) !!}
             @endif
         </div>
         <div>
@@ -47,7 +47,7 @@
                     趣味
                 </div>
                 <div class="interests-parts">
-                @foreach($interests as $row)
+                @foreach($interestsList as $row)
                     {!! Form::checkbox($row['name_tag'], $row['id'], false) !!}
                     {!! Form::label($row['name_tag'], $row['name']) !!}
                 @endforeach

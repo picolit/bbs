@@ -18,9 +18,13 @@ label {
   padding-right: 5px; }
 
 article {
-  background-color: #e9eaed;
+  background-color: white;
   margin-bottom: 10px;
+  padding-bottom: 10px;
   border-radius: 2px; }
+
+hr {
+  margin: 10px 0 10px 0; }
 
 .main > div {
   width: 90%;
@@ -46,6 +50,7 @@ article {
     display: table-cell;
     vertical-align: middle; }
     .header .left input {
+      display: none;
       width: 200px; }
   .header .center {
     width: 33%;
@@ -56,22 +61,12 @@ article {
       margin: 0; }
   .header .right {
     width: 33%;
-    display: table-cell; }
-
-.header .search-box {
-  padding: 8px 70px; }
-
-.header .search-input {
-  float: left;
-  color: #141823;
-  font-size: 14px;
-  -webkit-font-smoothing: antialiased;
-  height: 18px;
-  line-height: 18.6px;
-  padding: 1px 5px 2px 0;
-  -webkit-border-radius: 0;
-  -webkit-appearance: none;
-  border-radius: 4px; }
+    display: table-cell;
+    text-align: right;
+    padding-right: 10px; }
+    .header .right a {
+      color: white;
+      text-decoration: none; }
 
 .left-content {
   width: 300px;
@@ -133,16 +128,15 @@ article {
   color: #7f7f7f; }
 
 .replay_box {
-  margin-top: 10px;
-  margin-left: 50px;
-  background-color: #b2dba1; }
+  margin: 10px 10px 0 20px;
+  background-color: #e9eaed; }
 
 .article-title {
   font-weight: bold;
   font-size: 16px; }
 
 .article-body {
-  font-size: 14px;
+  font-size: 13px;
   background-color: white;
   border-radius: 4px;
   margin: 10px 0px 10px 0px;
@@ -153,26 +147,32 @@ article {
   width: 100%;
   color: #7f7f7f;
   margin-top: 7px;
-  font-size: 12px; }
-
-.article-footer .reply a {
-  color: #7f7f7f;
-  text-decoration: none;
-  font-weight: bold; }
-
-.article-footer .nice {
-  color: #7f7f7f;
   font-size: 12px;
-  font-weight: bold; }
-
-.article-footer .nice-btn a {
-  color: #7f7f7f; }
+  display: table; }
+  .article-footer a {
+    color: #7f7f7f;
+    text-decoration: none;
+    font-weight: bold;
+    display: table-cell; }
+  .article-footer .replay-btn {
+    display: table-cell; }
+  .article-footer .nice-box {
+    display: table-cell; }
+    .article-footer .nice-box .nice {
+      color: #7f7f7f;
+      font-size: 12px;
+      font-weight: bold; }
+    .article-footer .nice-box .nice-btn a {
+      color: #7f7f7f; }
+  .article-footer .nice-count {
+    display: table-cell; }
+  .article-footer .created-at {
+    display: table-cell; }
 
 /** post **/
 .post-form {
   background-color: white;
   border-radius: 4px;
-  padding: 0 0 5px 0;
   margin-bottom: 10px; }
   .post-form .my-form {
     margin-top: 0px;
@@ -180,7 +180,7 @@ article {
   .post-form .body {
     width: 100%;
     min-height: 63px;
-    height: 63px;
+    height: 100px;
     padding: 5px; }
   .post-form .interests-title {
     display: table-cell;
@@ -213,7 +213,8 @@ article {
     border-color: #435a8b #3c5488 #334c83;
     border-radius: 2px;
     color: #fff;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2); }
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer; }
 
 .file-select {
   margin: 15px 0 0 0; }
@@ -285,5 +286,49 @@ article {
   vertical-align: middle;
   width: 560px;
   height: 30px; }
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  background-color: white; }
+
+.link-btn {
+  padding: 6px 12px;
+  cursor: pointer;
+  display: block;
+  background-color: #4e69a2;
+  color: white;
+  width: 100px; }
+
+.help-content {
+  background-color: white;
+  width: 100%;
+  border-radius: 4px; }
+  .help-content .title {
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #4e69a2;
+    color: white;
+    width: 560px;
+    height: 30px;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: bold; }
+  .help-content .help-box {
+    padding: 10px; }
+    .help-content .help-box ul {
+      padding-left: 5px;
+      list-style-type: square; }
+      .help-content .help-box ul li {
+        display: block; }
+  .help-content .back-box {
+    width: 100%;
+    display: table;
+    margin-top: 20px; }
+    .help-content .back-box .btn {
+      margin-left: auto;
+      margin-right: auto; }
 
 /*# sourceMappingURL=app.css.map */

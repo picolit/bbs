@@ -61,24 +61,16 @@ class ArticlesController extends Controller
      */
     public function getIndex(Request $request)
     {
-        $conditions = $request->all();
-        $interests = $this->interest->get();
-        $sex = Config::get('const.sex');
-        $age = Config::get('const.age');
-        $prefectures = Config::get('const.prefectures');
-        $thumbnail_img_path = Config::get('const.thumbnail_img_path');
-        $original_img_path = Config::get('const.original_img_path');
-        $affiliates = (Config::get('const.affiliate'));
-        shuffle($affiliates);
-        $userId = $this->userService->getUserId($request);
+        $param = $this->getCommonDatas();
+        $param['conditions'] = $request->all();
+        $param['userId'] = $this->userService->getUserId($request);
+        $param['articles'] = $this->articleService->get($param['conditions']);
 
-        // @todo resの降順にする
-        // @todo res_id, update_at でindex
-        //$article = $this->article->where('res_id', 0)->orderBy('updated_at', 'desc')->paginate(self::PAGENATE_PER_PAGE);
-        $articles = $this->articleService->get($conditions);
-
-        return view('article.index',
-            compact('articles', 'userId', 'thumbnail_img_path', 'original_img_path', 'interests', 'sex', 'age', 'prefectures', 'conditions', 'affiliates'));
+        return view('article.index', $param
+//            compact('articles', 'userId', 'thumbnail_img_path', 'original_img_path', 'interestsList', 'sexList', 'ageList', 'areaList',
+//                'prefecturesList', 'conditions', 'affiliatesList'
+//            )
+        );
     }
 
     /**
@@ -104,6 +96,17 @@ class ArticlesController extends Controller
         $this->articleService->create($data);
 
         return response()->redirectToRoute('articles.getIndex');
+    }
+
+    /**
+     * ヘルプ
+     * @Get("/help", as="articles.getHelp")
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function getHelp()
+    {
+        $param = $this->getCommonDatas();
+        return view('article.help', $param);
     }
 
     /**
@@ -145,5 +148,21 @@ class ArticlesController extends Controller
         }
 
         return response();
+    }
+
+    private function getCommonDatas()
+    {
+        $result = [];
+        $result['interestsList'] = $this->interest->get();
+        $result['sexList'] = Config::get('const.sex');
+        $result['ageList'] = Config::get('const.age');
+        $result['areaList'] = Config::get('const.area');
+        $result['prefecturesList'] = Config::get('const.prefectures');
+        $result['thumbnail_img_path'] = Config::get('const.thumbnail_img_path');
+        $result['original_img_path'] = Config::get('const.original_img_path');
+        $result['affiliatesList'] = (Config::get('const.affiliate'));
+        shuffle($result['affiliatesList']);
+
+        return $result;
     }
 }

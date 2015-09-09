@@ -67,9 +67,11 @@ class Article extends Model
         }
 
         // 地域
-//        if ($conditions['area'] and $conditions['area'] !== '0') {
-//            $query->where('area', $conditions['area']);
-//        }
+        if (isset($conditions['area']) and $conditions['area'] !== '0') {
+            $areas = config::get('const.area_prefectures');
+            $areaPrefectures = [[$conditions['area']]];
+            $query->whereIn('prefectures', $areaPrefectures);
+        }
 
         $hasInterests = false;
         $interests = Interest::all();

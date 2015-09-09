@@ -66,11 +66,7 @@ class ArticlesController extends Controller
         $param['userId'] = $this->userService->getUserId($request);
         $param['articles'] = $this->articleService->get($param['conditions']);
 
-        return view('article.index', $param
-//            compact('articles', 'userId', 'thumbnail_img_path', 'original_img_path', 'interestsList', 'sexList', 'ageList', 'areaList',
-//                'prefecturesList', 'conditions', 'affiliatesList'
-//            )
-        );
+        return view('article.index', $param);
     }
 
     /**

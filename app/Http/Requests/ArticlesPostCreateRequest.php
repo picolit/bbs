@@ -36,9 +36,10 @@ class ArticlesPostCreateRequest extends Request
 //            'age' => 'required|integer',
             'title' => 'required|min:5|max:50',
             'body' => 'required|min:1|max:1024',   // @todo 20文字くらいにする
-            'file1' => 'image',
-            'file2' => 'image',
+            'file1' => 'image|max:5000',
+            'file2' => 'image|max:5000',
             'password' => '',
+            'mail' => 'email',
         ];
 
         // sex

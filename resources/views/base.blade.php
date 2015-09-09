@@ -53,7 +53,7 @@
         <ul class="nav">
             <li><div class="left-content">@include('parts/left_content')</div></li>
             <li><div class="center-content">@yield ('content')</div></li>
-            <li style="position: absolute"><div class="right-content">@include('parts/right_content')</div></li>
+            <li><div class="right-content">@include('parts/right_content')</div></li>
         </ul>
     </div>
 </div>

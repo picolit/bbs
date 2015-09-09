@@ -4,6 +4,7 @@
 use \App\Orm\Article;
 use App\Orm\Interest;
 use App\Orm\Photo;
+use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Intervention\Image\Facades\Image;
@@ -23,18 +24,22 @@ class ArticleService
     private $analysisService;
     /** @var Interest */
     private $interest;
+    /** @var Mailer */
+    private $mailer;
 
     /**
      * Constructor
      * @param Article $article
      * @param AnalysisService $analysisService
      * @param Interest $interest
+     * @param Mailer $mailer
      */
-    public function __construct(Article $article, AnalysisService $analysisService, Interest $interest)
+    public function __construct(Article $article, AnalysisService $analysisService, Interest $interest, Mailer $mailer)
     {
         $this->article = $article;
         $this->analysisService = $analysisService;
         $this->interest = $interest;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -62,7 +67,8 @@ class ArticleService
             $this->article->{'prefectures'} = $data['prefectures'];
             $this->article->{'title'} = $data['title'];
             $this->article->{'body'} = $data['body'];
-            $this->article->{'password'} = $data['password'];
+            $this->article->{'mail'} = $data['mail'];
+//            $this->article->{'password'} = $data['password'];
             $this->article->{'ip_address'} = $data['client_ip'];
             $this->article->save();
 
@@ -70,6 +76,8 @@ class ArticleService
             $parentArticle = $this->article->newInstance();
             if ($this->article->{'res_id'} !== '0') {
                 $parentArticle->find($this->article->{'res_id'})->touch();
+                // @todo キューでおこなう
+                $this->sendMail($this->article, $parentArticle->{'name'});
             }
 
             $photos = [];
@@ -180,13 +188,23 @@ class ArticleService
         return $result;
     }
 
-    //[例:986/100]という文字列を[986÷100=9.86]というように数値に変換する関数
+    /**
+     * [例:986/100]という文字列を[986÷100=9.86]というように数値に変換する関数
+     * @param $str
+     * @return float
+     */
     private function convert_float($str)
     {
         $val = explode("/", $str);
         return (isset($val[1])) ? $val[0] / $val[1] : $str;
     }
 
+    /**
+     *
+     * @param string $dirpath
+     * @param bool|true $create_flg
+     * @return bool
+     */
     private function chkDir($dirpath, $create_flg = true)
     {
         $return = false;
@@ -203,5 +221,23 @@ class ArticleService
         }
 
         return $return;
+    }
+
+    /**
+     * @todo キューで送る
+     * @param Article $article
+     * @param string $toName
+     */
+    private function sendMail(Article $article, $toName)
+    {
+        if ($article->{'mail'}) {
+            $this->mailer->send(
+                'parts.reply_mail',
+                ['article' => $article, 'toName' => $toName],
+                function ($message) use ($article) {
+                    $message->to($article->{'mail'}, 'テスト')->subject($article->{'name'} . 'さんから返信が届きました');
+                }
+            );
+        }
     }
 }

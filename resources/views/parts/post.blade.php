@@ -6,16 +6,16 @@
 
         <div style="margin-bottom: 5px">
             @if($errors->has('name'))
-                {!! Form::text('name', null, ['class' => 'error', 'placeholder' => 'お名前']) !!}
+                {!! Form::text('name', null, ['class' => 'error', 'placeholder' => 'お名前（必須）']) !!}
             @else
-                {!! Form::text('name', null, ['class' => '', 'placeholder' => 'お名前']) !!}
+                {!! Form::text('name', null, ['class' => '', 'placeholder' => 'お名前（必須）']) !!}
             @endif
             @if($errors->has('title'))
-                {!! Form::text('title', null, ['class' => 'error', 'placeholder' => 'タイトル', 'style' => 'width:279px']) !!}
+                {!! Form::text('title', null, ['class' => 'error', 'placeholder' => 'タイトル（必須）', 'style' => 'width:279px']) !!}
             @else
-                {!! Form::text('title', null, ['class' => '', 'placeholder' => 'タイトル', 'style' => 'width:279px']) !!}
+                {!! Form::text('title', null, ['class' => '', 'placeholder' => 'タイトル（必須）', 'style' => 'width:279px']) !!}
             @endif
-            {!! Form::password('password', ['placeholder' => 'パスワード']) !!}
+            {!! Form::text('mail', null, ['placeholder' => 'メールアドレス']) !!}
         </div>
         <div>
             @if($errors->has('sex'))

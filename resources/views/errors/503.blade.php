@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>正常な状態に戻しましょう。</title>
+        <title>メンテナンス中です。</title>
 
         <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -40,7 +40,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">正常な状態に戻しましょう。</div>
+                <div class="title">メンテナンス中です。</div>
             </div>
         </div>
     </body>

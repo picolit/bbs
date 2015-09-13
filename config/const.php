@@ -109,9 +109,9 @@ return [
     'thumbnail_img_path' => 'thumbnail/',
     'original_img_path' => 'upload_img/',
     'affiliate' => [
+        '<a href="http://click.dtiserv2.com/Click/1409004-409-179755" target="_blank"><img width="300px" src="http://affiliate.dtiserv.com/image/lescom/1409004.jpg" border="0"></a>',
         '<a href="http://click.dtiserv2.com/Click/2411001-411-179755" target="_blank"><img width="300px" src="http://affiliate.dtiserv.com/image/h2050w/2411001.gif" border="0"></a>',
         '<a href="http://click.dtiserv2.com/Click/1409005-409-179755" target="_blank"><img width="300px" src="http://affiliate.dtiserv.com/image/lescom/1409005.jpg" border="0"></a>',
-        '<a href="http://click.dtiserv2.com/Click/1409004-409-179755" target="_blank"><img width="300px" src="http://affiliate.dtiserv.com/image/lescom/1409004.jpg" border="0"></a>',
         '<a href="http://click.dtiserv2.com/Click/1409002-409-179755" target="_blank"><img width="300px" src="http://affiliate.dtiserv.com/image/lescom/1409002.jpg" border="0"></a>',
         '<a href="http://click.dtiserv2.com/Click/2122007-122-179755" target="_blank"><img width="300px" src="http://affiliate.dtiserv.com/image/netcomic/122-400-04.gif" border="0"></a>',
         '<a href="http://click.dtiserv2.com/Click/2122004-122-179755" target="_blank"><img width="300px" src="http://affiliate.dtiserv.com/image/netcomic/122-400-03.gif" border="0"></a>',

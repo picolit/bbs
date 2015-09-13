@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{-- $metadata->description --}}">
-    <meta name="keywords" content="{{-- implode(', ', $metadata->keywords) --}}">
-    <meta name="author" content="{{-- $metadata->author --}}">
+    <meta name="description" content="アダルト地域別コミュニケーションサイト">
+    <meta name="keywords" content="{{ implode(', ', $keyword) }}">
+    <meta name="author" content="peach-x">
+    <meta http-equiv="content-language" content="ja">
 
-    <title>{{-- $metadata->page_title --}}</title>
+    <title>変態仲間募集掲示板 | 地域別SNS　ピーチX</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">

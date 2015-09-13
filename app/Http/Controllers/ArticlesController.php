@@ -150,6 +150,7 @@ class ArticlesController extends Controller
     {
         $result = [];
         $result['interestsList'] = $this->interest->get();
+        $result['keyword'] = $result['interestsList']->pluck('name')->toArray();
         $result['sexList'] = Config::get('const.sex');
         $result['ageList'] = Config::get('const.age');
         $result['areaList'] = Config::get('const.area');

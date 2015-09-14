@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1260, initial-scale=1.0", user-scalable=yes">
     <meta name="description" content="アダルト地域別コミュニケーションサイト">
     <meta name="keywords" content="{{ implode(', ', $keyword) }}">
     <meta name="author" content="peach-x">

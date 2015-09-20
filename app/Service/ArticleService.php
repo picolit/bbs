@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class ArticleService
 {
-    const PAGENATE_PER_PAGE = 5;
+    const PAGENATE_PER_PAGE = 10;
 
     /** @var Article */
     private $article;

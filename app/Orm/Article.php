@@ -89,11 +89,13 @@ class Article extends Model
 
         if ($hasInterests) {
             $query->whereHas('interests', function ($query) use ($conditions, $interests, $keys) {
+                $interestCondition = [];
                 foreach ($interests as $row) {
                     if (in_array($row->name_tag, $keys)) {
-                        $query->where('interests.id', $conditions[$row->name_tag]);
+                        $interestCondition[] = $row->id;
                     }
                 }
+                $query->whereIn('interests.id', $interestCondition);
             });
         }
 

@@ -68,7 +68,7 @@ class ArticleService
             $this->article->{'title'} = $data['title'];
             $this->article->{'body'} = $data['body'];
             $this->article->{'mail'} = $data['mail'];
-//            $this->article->{'password'} = $data['password'];
+            $this->article->{'password'} = $data['password'];
             $this->article->{'ip_address'} = $data['client_ip'];
             $this->article->save();
 
@@ -103,10 +103,28 @@ class ArticleService
             }
 
             // 新規記事件数インクリメント
-            if ($this->article->{'res_id'} === 0) {
+            if ($this->article->{'res_id'} === "0") {
                 $this->analysisService->newPostIncrement();
             }
         });
+    }
+
+    /**
+     * 記事削除
+     * @param $data
+     * @throws \Exception
+     */
+    public function delete($data)
+    {
+        $article = $this->article->find($data['id']);
+        if ($article) {
+            if ($article->password === $data['password']) {
+                $article->delete();
+                Log::debug(sprintf('article delete. id: %s, password: %s', $data['id'], $data['password']));
+            } else {
+                Log::info(sprintf('password missing. id: %s, password: %s', $data['id'], $data['password']));
+            }
+        }
     }
 
     /**

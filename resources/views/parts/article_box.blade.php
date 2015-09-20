@@ -1,9 +1,16 @@
 <div id="id{{$row->id}}" class="{{$class}}">
-    <div class="poster-info">
-        <span class="name">{{ $row->name }}</span>
-        <span class="sex">{{ const_value('sex', $row->sex) }}</span>
-        <span class="age">{{ const_value('age', $row->age) }}</span>
-        <span class="prefectures">{{ const_value('prefectures', $row->prefectures) }}</span>
+    <div class="article-header">
+        <div class="article-header-01">
+            <span class="name">{{ $row->name }}</span>
+            <span class="sex">{{ const_value('sex', $row->sex) }}</span>
+            <span class="age">{{ const_value('age', $row->age) }}</span>
+            <span class="prefectures">{{ const_value('prefectures', $row->prefectures) }}</span>
+        </div>
+        <div class="article-header-02">
+            @if($row->password)
+            <a onClick="articleDelete({{$row->id}})">削除</a>
+            @endif
+        </div>
     </div>
     <div class="interest">
         <span class="on">興味</span>

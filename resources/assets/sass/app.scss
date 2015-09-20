@@ -185,6 +185,18 @@ hr {
   padding: 5px;
 }
 
+.article-header {
+  display: table;
+  width: 100%;
+  .article-header-01 {
+    display: table-cell;
+  }
+  .article-header-02 {
+    text-align: right;
+    display: table-cell;
+  }
+}
+
 /** いいね */
 .article-footer {
   width: 100%;
@@ -382,6 +394,12 @@ hr {
   color: white;
   width: 100px;
 }
+
+.require {
+  color: red;
+  margin: 0 3px 0 0;
+}
+
 //----- ヘルプ -----
 .help-content {
   background-color: white;

@@ -14,6 +14,7 @@ return [
         4 => '40代',
         5 => '50代',
         6 => '60代以上',
+        9 => '秘密'
     ],
     'area' => [
         0 => '地域を選択',
@@ -105,6 +106,7 @@ return [
         45 => '宮崎県',
         46 => '鹿児島県',
         47 => '沖縄県',
+        48 => '秘密'
     ],
     'thumbnail_img_path' => 'thumbnail/',
     'original_img_path' => 'upload_img/',

@@ -6,39 +6,40 @@
 
         <div style="margin-bottom: 5px">
             @if($errors->has('name'))
-                {!! Form::text('name', null, ['class' => 'error', 'placeholder' => 'お名前（必須）']) !!}
+                <span class="require">*</span>{!! Form::text('name', null, ['class' => 'error', 'placeholder' => 'お名前（必須）']) !!}
             @else
-                {!! Form::text('name', null, ['class' => '', 'placeholder' => 'お名前（必須）']) !!}
+                <span class="require">*</span>{!! Form::text('name', null, ['class' => '', 'placeholder' => 'お名前（必須）']) !!}
             @endif
             @if($errors->has('title'))
-                {!! Form::text('title', null, ['class' => 'error', 'placeholder' => 'タイトル（必須）', 'style' => 'width:279px']) !!}
+                <span class="require">*</span>{!! Form::text('title', null, ['class' => 'error', 'placeholder' => 'タイトル（必須）', 'style' => 'width:260px']) !!}
             @else
-                {!! Form::text('title', null, ['class' => '', 'placeholder' => 'タイトル（必須）', 'style' => 'width:279px']) !!}
+                <span class="require">*</span>{!! Form::text('title', null, ['class' => '', 'placeholder' => 'タイトル（必須）', 'style' => 'width:260px']) !!}
             @endif
-            {!! Form::text('mail', null, ['placeholder' => 'メールアドレス']) !!}
+            {!! Form::email('mail', null, ['placeholder' => 'メールアドレス']) !!}
         </div>
         <div>
             @if($errors->has('sex'))
-                {!! Form::select('sex', $sexList, null, ['class' => 'error']) !!}
+                <span class="require">*</span>{!! Form::select('sex', $sexList, null, ['class' => 'error']) !!}
             @else
-                {!! Form::select('sex', $sexList) !!}
+                <span class="require">*</span>{!! Form::select('sex', $sexList) !!}
             @endif
             @if($errors->has('age'))
-                {!! Form::select('age', $ageList, null, ['class' => 'error']) !!}
+                <span class="require">*</span>{!! Form::select('age', $ageList, null, ['class' => 'error']) !!}
             @else
-                {!! Form::select('age', $ageList) !!}
+                <span class="require">*</span>{!! Form::select('age', $ageList) !!}
             @endif
             @if($errors->has('prefectures'))
-                {!! Form::select('prefectures', $prefecturesList, null, ['class' => 'error']) !!}
+                <span class="require">*</span>{!! Form::select('prefectures', $prefecturesList, null, ['class' => 'error']) !!}
             @else
-                {!! Form::select('prefectures', $prefecturesList) !!}
+                <span class="require">*</span>{!! Form::select('prefectures', $prefecturesList) !!}
             @endif
+            {!! Form::text('password', null, ['class' => '', 'placeholder' => 'パスワード', 'style' => 'width:200px']) !!}
         </div>
         <div>
         @if($errors->has('body'))
-            {!! Form::textarea('body', null, ['class' => 'body error', 'style'=>'width:100%']) !!}
+            <span class="require">*</span>{!! Form::textarea('body', null, ['class' => 'body error', 'style'=>'width:100%']) !!}
         @else
-            {!! Form::textarea('body', null, ['class' => 'body', 'style'=>'width:98%']) !!}
+            <span class="require">*</span>{!! Form::textarea('body', null, ['class' => 'body', 'style'=>'width:98%']) !!}
         @endif
         </div>
         <div style="width: 100%;">

@@ -112,3 +112,11 @@ function handleFileSelect2(evt) {
     // Read in the image file as a data URL.
     reader.readAsDataURL(f);
 }
+
+function articleDelete(id) {
+    var password = prompt("パスワードを入力してください。", "");
+
+    if (password) {
+        location.href = 'delete/'+id+'/'+password
+    }
+}

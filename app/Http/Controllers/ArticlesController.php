@@ -95,6 +95,25 @@ class ArticlesController extends Controller
     }
 
     /**
+     * 記事削除
+     * @Get("/delete/{id}/{password}", as="articles.getDelete", where={"id": "[0-9]+"})
+     * @param string $id
+     * @param string $password
+     * @return  \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function getDelete($id, $password)
+    {
+        $data = [
+            'id' => $id,
+            'password' => $password
+        ];
+
+        $this->articleService->delete($data);
+
+        return response()->redirectToRoute('articles.getIndex');
+    }
+
+    /**
      * ヘルプ
      * @Get("/help", as="articles.getHelp")
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response

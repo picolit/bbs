@@ -11,11 +11,11 @@
                 <span class="require">*</span>{!! Form::text('name', null, ['class' => '', 'placeholder' => 'お名前（必須）']) !!}
             @endif
             @if($errors->has('title'))
-                <span class="require">*</span>{!! Form::text('title', null, ['class' => 'error', 'placeholder' => 'タイトル（必須）', 'style' => 'width:225px']) !!}
+                <span class="require">*</span>{!! Form::text('title', null, ['class' => 'error', 'placeholder' => 'タイトル（必須）', 'style' => 'width:200px']) !!}
             @else
-                <span class="require">*</span>{!! Form::text('title', null, ['class' => '', 'placeholder' => 'タイトル（必須）', 'style' => 'width:225px']) !!}
+                <span class="require">*</span>{!! Form::text('title', null, ['class' => '', 'placeholder' => 'タイトル（必須）', 'style' => 'width:200px']) !!}
             @endif
-            {!! Form::email('mail', null, ['placeholder' => 'メールアドレス']) !!}
+            {!! Form::text('password', null, ['class' => '', 'placeholder' => 'パスワード', 'style' => 'width:150px']) !!}
         </div>
         <div>
             @if($errors->has('sex'))
@@ -33,7 +33,7 @@
             @else
                 <span class="require">*</span>{!! Form::select('prefectures', $prefecturesList) !!}
             @endif
-            {!! Form::text('password', null, ['class' => '', 'placeholder' => 'パスワード', 'style' => 'width:200px']) !!}
+            {!! Form::email('mail', null, ['placeholder' => 'メールアドレス', 'style' => 'width:191px']) !!}
         </div>
         <div>
         @if($errors->has('body'))

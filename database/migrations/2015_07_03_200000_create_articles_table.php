@@ -24,6 +24,7 @@ class CreateArticlesTable extends Migration
             $table->string('mail', 32);
             $table->string('password',16)->nullable();
             $table->string(('ip_address'));
+            $table->smallInteger('checked');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -70,6 +70,7 @@ class ArticleService
             $this->article->{'mail'} = $data['mail'];
             $this->article->{'password'} = $data['password'];
             $this->article->{'ip_address'} = $data['client_ip'];
+            $this->article->{'checked'} = 0;
             $this->article->save();
 
             // 返信の場合、親のupdate_atを更新

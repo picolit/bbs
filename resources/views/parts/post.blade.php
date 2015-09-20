@@ -49,7 +49,7 @@
                 </div>
                 <div class="interests-parts">
                 @foreach($interestsList as $row)
-                    {!! Form::checkbox($row['name_tag'], $row['id'], false) !!}
+                    {!! Form::checkbox($row['name_tag'], $row['id'], false, ['id' => $row['name_tag']]) !!}
                     {!! Form::label($row['name_tag'], $row['name']) !!}
                 @endforeach
                 </div>

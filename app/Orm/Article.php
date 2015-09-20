@@ -55,24 +55,24 @@ class Article extends Model
     public function scopeSearch(Builder $query, array $conditions)
     {
         // 見た目
-        if (isset($conditions['sex']) and $conditions['sex'] !== '0') {
-            $query->where('sex', $conditions['sex']);
+        if (isset($conditions['sex_s']) and $conditions['sex_s'] !== '0') {
+            $query->where('sex', $conditions['sex_s']);
         }
 
         // 年代
-        if (isset($conditions['age']) and $conditions['age'] !== '0') {
-            $query->where('age', $conditions['age']);
+        if (isset($conditions['age_s']) and $conditions['age_s'] !== '0') {
+            $query->where('age', $conditions['age_s']);
         }
 
         // 都道府県
-        if (isset($conditions['prefectures']) and $conditions['prefectures'] !== '0') {
-            $query->where('prefectures', $conditions['prefectures']);
+        if (isset($conditions['prefectures_s']) and $conditions['prefectures_s'] !== '0') {
+            $query->where('prefectures', $conditions['prefectures_s']);
         }
 
         // 地域
-        if (isset($conditions['area']) and $conditions['area'] !== '0') {
+        if (isset($conditions['area_s']) and $conditions['area_s'] !== '0') {
             $areas = config::get('const.area_prefectures');
-            $areaPrefectures = [[$conditions['area']]];
+            $areaPrefectures = $areas[$conditions['area_s']];
             $query->whereIn('prefectures', $areaPrefectures);
         }
 

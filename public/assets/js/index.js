@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    setConditionSelector();
+
     var replyId = $("input[name='parent_id']").val();
     if (replyId !== '0') {
         replyArticleShow(replyId);
@@ -40,12 +42,6 @@ $(document).ready(function(){
 
     // キャンセルボタン押下
     $('.post-cancel-btn').on('click', function() {
-        //$('.post-title').text("新規投稿");
-        //// hiddenのidを変更
-        //$("input[name='parent_id']").val(0);
-        //var $replyArticle = $("#reply-article");
-        //$replyArticle.children().remove();
-        //$(this).hide();
         window.location = '/';
     });
 
@@ -118,5 +114,24 @@ function articleDelete(id) {
 
     if (password) {
         location.href = 'delete/'+id+'/'+password
+    }
+}
+
+function setConditionSelector()
+{
+    var vars = [], max = 0, hash = "", array = "";
+    var url = window.location.search;
+
+    //?を取り除くため、1から始める。複数のクエリ文字列に対応するため、&で区切る
+    hash  = url.slice(1).split('&');
+    max = hash.length;
+    for (var i = 0; i < max; i++) {
+        array = hash[i].split('=');    //keyと値に分割。
+        console.log(array[0], array[1]);
+
+        if ('sex_s' === array[0] || 'age_s' === array[0] || 'prefectures_s' === array[0] || 'area_s' === array[0]) {
+            $('select[name=' + array[0] + ']').val(array[1]);
+        }
+
     }
 }

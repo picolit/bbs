@@ -19,7 +19,7 @@
                                     {!! Form::label('見た目') !!}
                                 </td>
                                 <td>
-                                    {!! Form::select('sex', $sexList) !!}
+                                    {!! Form::select('sex_s', $sexList) !!}
                                 </td>
                             </tr>
                             <tr>
@@ -27,7 +27,7 @@
                                     {!! Form::label('年齢') !!}
                                 </td>
                                 <td>
-                                    {!! Form::select('age', $ageList) !!}
+                                    {!! Form::select('age_s', $ageList) !!}
                                 </td>
                             </tr>
                             <tr>
@@ -35,7 +35,7 @@
                                     {!! Form::label('都道府県') !!}
                                 </td>
                                 <td>
-                                    {!! Form::select('prefectures', $prefecturesList) !!}
+                                    {!! Form::select('prefectures_s', $prefecturesList) !!}
                                 </td>
                             </tr>
                             <tr>
@@ -43,7 +43,7 @@
                                     {!! Form::label('地域') !!}
                                 </td>
                                 <td>
-                                    {!! Form::select('area', $areaList) !!}
+                                    {!! Form::select('area_s', $areaList) !!}
                                 </td>
                             </tr>
                         </table>

@@ -47,6 +47,7 @@ hr {
 }
 
 .nav {
+  width: 100%;
   display: table;
   li {
     display: table-cell;
@@ -54,19 +55,19 @@ hr {
 }
 
 .left-content {
-  width: 300px;
+  //width: 300px;
   height: 1100px;
 }
 
 .center-content {
-  width: 600px;
+  //width: 600px;
   padding: 0 20px 0 20px;
   font-size: 12px;
 }
 
 .right-content {
   position: relative;
-  width: 300px;
+  //width: 300px;
   .affiliate-list {
     position: absolute;
     div {
@@ -339,7 +340,7 @@ hr {
     //background: #EFEFEF;
     li {
       float: left;
-      width: 70px;
+      width: 71px;
       margin: 0 10px 10px 0;
       input {
         margin-right: 5px;

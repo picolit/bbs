@@ -31,22 +31,20 @@ hr {
   margin: 0 auto; }
 
 .nav {
+  width: 100%;
   display: table; }
   .nav li {
     display: table-cell; }
 
 .left-content {
-  width: 300px;
   height: 1100px; }
 
 .center-content {
-  width: 600px;
   padding: 0 20px 0 20px;
   font-size: 12px; }
 
 .right-content {
-  position: relative;
-  width: 300px; }
+  position: relative; }
   .right-content .affiliate-list {
     position: absolute; }
     .right-content .affiliate-list div {
@@ -267,7 +265,7 @@ hr {
     padding: 10px 10px 0; }
     .search .keep li {
       float: left;
-      width: 70px;
+      width: 71px;
       margin: 0 10px 10px 0; }
       .search .keep li input {
         margin-right: 5px;

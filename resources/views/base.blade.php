@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1260, initial-scale=1.0", user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0", user-scalable=yes">
     <meta name="description" content="アダルト地域別コミュニケーションサイト">
     <meta name="keywords" content="{{ implode(', ', $keyword) }}">
     <meta name="author" content="peach-x">
@@ -53,9 +53,9 @@
 <div class="main">
     <div>
         <ul class="nav">
-            <li><div class="left-content">@include('parts/left_content')</div></li>
-            <li><div class="center-content">@yield ('content')</div></li>
-            <li><div class="right-content">@include('parts/right_content')</div></li>
+            <li style="width: 300px"><div class="left-content">@include('parts/left_content')</div></li>
+            <li style="width: 600px"><div class="center-content">@yield ('content')</div></li>
+            <li style="width: 300px"><div class="right-content">@include('parts/right_content')</div></li>
         </ul>
     </div>
 </div>

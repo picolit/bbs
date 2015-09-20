@@ -11,9 +11,9 @@
                 <span class="require">*</span>{!! Form::text('name', null, ['class' => '', 'placeholder' => 'お名前（必須）']) !!}
             @endif
             @if($errors->has('title'))
-                <span class="require">*</span>{!! Form::text('title', null, ['class' => 'error', 'placeholder' => 'タイトル（必須）', 'style' => 'width:260px']) !!}
+                <span class="require">*</span>{!! Form::text('title', null, ['class' => 'error', 'placeholder' => 'タイトル（必須）', 'style' => 'width:225px']) !!}
             @else
-                <span class="require">*</span>{!! Form::text('title', null, ['class' => '', 'placeholder' => 'タイトル（必須）', 'style' => 'width:260px']) !!}
+                <span class="require">*</span>{!! Form::text('title', null, ['class' => '', 'placeholder' => 'タイトル（必須）', 'style' => 'width:225px']) !!}
             @endif
             {!! Form::email('mail', null, ['placeholder' => 'メールアドレス']) !!}
         </div>

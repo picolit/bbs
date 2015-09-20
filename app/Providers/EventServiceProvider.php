@@ -16,9 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
         ],
-        'illuminate.query' => [
-            'App\Handlers\Events\QueryLogTracker',
-        ],
+//        'illuminate.query' => [
+//            'App\Handlers\Events\QueryLogTracker',
+//        ],
     ];
 
     /**

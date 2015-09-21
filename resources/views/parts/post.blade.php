@@ -15,7 +15,7 @@
             @else
                 <span class="require">*</span>{!! Form::text('title', null, ['class' => '', 'placeholder' => 'タイトル（必須）', 'style' => 'width:200px']) !!}
             @endif
-            {!! Form::text('password', null, ['class' => '', 'placeholder' => 'パスワード', 'style' => 'width:150px']) !!}
+            {!! Form::text('password', null, ['class' => '', 'placeholder' => 'パスワード', 'style' => 'width:145px']) !!}
         </div>
         <div>
             @if($errors->has('sex'))

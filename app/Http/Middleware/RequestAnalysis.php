@@ -17,7 +17,10 @@ class RequestAnalysis
      */
     public function handle($request, Closure $next)
     {
-        $this->analysis();
+        if (!starts_with($request->getClientIp(), '192.168.0')) {
+            $this->analysis();
+        }
+
         return $next($request);
     }
 

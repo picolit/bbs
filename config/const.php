@@ -117,6 +117,9 @@ return [
         '<a href="http://click.dtiserv2.com/Click/1409002-409-179755" target="_blank"><img width="300px" src="http://affiliate.dtiserv.com/image/lescom/1409002.jpg" border="0"></a>',
         '<a href="http://click.dtiserv2.com/Click/2122007-122-179755" target="_blank"><img width="300px" src="http://affiliate.dtiserv.com/image/netcomic/122-400-04.gif" border="0"></a>',
         '<a href="http://click.dtiserv2.com/Click/2122004-122-179755" target="_blank"><img width="300px" src="http://affiliate.dtiserv.com/image/netcomic/122-400-03.gif" border="0"></a>',
+        '<a href="http://click.dtiserv2.com/Click10/1006001-6-179755" target="_blank"><img width="300px" src="http://affiliate.dtiserv.com/image/carib/newmovie.jpg" border="0"></a>',
+        '<a href="http://click.dtiserv2.com/Click800/1320009-320-179755" target="_blank"><img width="300px" src="http://affiliate.dtiserv.com/image/paco/1320009_b.jpg" border="0"></a>',
+        '<iframe src="http://www.mmaaxx.com/table/carib/index05.html?affid=179755" width="495" height="210" frameborder="no" scrolling="no"></iframe>',
 //        '<iframe src="http://www.mmaaxx.com/table/netcomic/index05.html?affid=179755" width="496" height="151" frameborder="no" scrolling="no"></iframe>',
     ],
 ];

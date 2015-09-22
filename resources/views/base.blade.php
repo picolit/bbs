@@ -10,6 +10,12 @@
 
     <title>変態仲間募集掲示板 | 地域別SNS　ピーチX</title>
 
+    @if(env('PROTOCOL') === 'http')
+        <link rel="SHORTCUT ICON" href="{{ asset('assets/images/favicon.ico') }}">
+    @else
+        <link rel="SHORTCUT ICON" href="{{ secure_asset('assets/images/favicon.ico') }}">
+    @endif
+
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     @if(env('PROTOCOL') === 'http')
         <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">

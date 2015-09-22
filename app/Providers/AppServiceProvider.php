@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Orm\Interest;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $result = [];
+        $result['interestsList'] = Interest::all();
+        $result['keyword'] = $result['interestsList']->pluck('name')->toArray();
+        $result['sexList'] = Config::get('const.sex');
+        $result['ageList'] = Config::get('const.age');
+        $result['areaList'] = Config::get('const.area');
+        $result['prefecturesList'] = Config::get('const.prefectures');
+        $result['thumbnail_img_path'] = Config::get('const.thumbnail_img_path');
+        $result['original_img_path'] = Config::get('const.original_img_path');
+        $result['affiliatesList'] = (Config::get('const.affiliate'));
+        shuffle($result['affiliatesList']);
+
+        foreach ($result as $key => $value) {
+            view()->share($key, $value);
+        }
     }
 
     /**

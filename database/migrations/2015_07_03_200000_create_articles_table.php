@@ -21,7 +21,7 @@ class CreateArticlesTable extends Migration
             $table->integer('prefectures');
             $table->string('title', 50);
             $table->string('body', 1024);
-            $table->string('mail', 32);
+            $table->string('mail', 50);
             $table->string('password',16)->nullable();
             $table->string(('ip_address'));
             $table->smallInteger('checked');

@@ -99,6 +99,8 @@ class Article extends Model
             });
         }
 
+        $query->where('res_id', 0);
+
         return $query;
     }
 

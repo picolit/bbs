@@ -1,10 +1,13 @@
 <?php namespace App\Service;
 
 
+use App\Jobs\InquirySendEmail;
+use App\Jobs\ReplySendEmail;
 use \App\Orm\Article;
 use App\Orm\Interest;
 use App\Orm\Photo;
 use Illuminate\Contracts\Mail\Mailer;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Intervention\Image\Facades\Image;
@@ -16,6 +19,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class ArticleService
 {
+    use DispatchesJobs;
+
     const PAGENATE_PER_PAGE = 10;
 
     /** @var Article */
@@ -73,12 +78,17 @@ class ArticleService
             $this->article->{'checked'} = 0;
             $this->article->save();
 
-            // 返信の場合、親のupdate_atを更新
-            $parentArticle = $this->article->newInstance();
+            // 返信の場合、親のupdate_atを更新とお知らせメール送信
             if ($this->article->{'res_id'} !== '0') {
-                $parentArticle->find($this->article->{'res_id'})->touch();
-                // @todo キューでおこなう
-                $this->sendMail($this->article, $parentArticle->{'name'});
+                $article = $this->article->newInstance();
+                $parentArticle = $article->find($this->article->{'res_id'});
+
+                if ($parentArticle->mail) {
+                    Log::info('replay mail set queue. id: ' . $this->article->{'id'});
+                    $this->article->{'toName'} = $parentArticle->{'name'};
+                    $this->article->{'parentMail'} = $parentArticle->{'mail'};
+                    $this->dispatch(new ReplySendEmail($parentArticle, $this->article));
+                }
             }
 
             $photos = [];
@@ -243,20 +253,10 @@ class ArticleService
     }
 
     /**
-     * @todo キューで送る
-     * @param Article $article
-     * @param string $toName
+     * @param $data
      */
-    private function sendMail(Article $article, $toName)
+    public function inquirySendMail($data)
     {
-        if ($article->{'mail'}) {
-            $this->mailer->send(
-                'parts.reply_mail',
-                ['article' => $article, 'toName' => $toName],
-                function ($message) use ($article) {
-                    $message->to($article->{'mail'}, 'テスト')->subject($article->{'name'} . 'さんから返信が届きました');
-                }
-            );
-        }
+        $this->dispatch(new InquirySendEmail($data));
     }
 }

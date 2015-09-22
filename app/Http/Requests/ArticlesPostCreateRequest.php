@@ -37,7 +37,7 @@ class ArticlesPostCreateRequest extends Request
             'file1' => 'image|max:5000',
             'file2' => 'image|max:5000',
             'password' => 'alpha_num|max:16',
-            'mail' => 'email',
+            'mail' => 'email|max:50',
         ];
 
         // sex

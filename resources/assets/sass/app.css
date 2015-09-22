@@ -314,11 +314,11 @@ hr {
   color: red;
   margin: 0 3px 0 0; }
 
-.help-content {
+.common-content {
   background-color: white;
   width: 100%;
   border-radius: 4px; }
-  .help-content .title {
+  .common-content .title {
     display: table-cell;
     vertical-align: middle;
     background-color: #4e69a2;
@@ -328,19 +328,21 @@ hr {
     text-align: center;
     border-radius: 4px;
     font-weight: bold; }
-  .help-content .help-box {
+  .common-content .help-box {
     padding: 10px; }
-    .help-content .help-box ul {
+    .common-content .help-box ul {
       padding-left: 5px;
       list-style-type: square; }
-      .help-content .help-box ul li {
+      .common-content .help-box ul li {
         display: block; }
-  .help-content .back-box {
+  .common-content .back-box {
     width: 100%;
     display: table;
     margin-top: 20px; }
-    .help-content .back-box .btn {
+    .common-content .back-box .btn {
       margin-left: auto;
       margin-right: auto; }
+  .common-content .error {
+    color: red; }
 
 /*# sourceMappingURL=app.css.map */

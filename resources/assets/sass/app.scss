@@ -403,7 +403,7 @@ hr {
 }
 
 //----- ヘルプ -----
-.help-content {
+.common-content {
   background-color: white;
   width: 100%;
   border-radius: $radius;
@@ -439,5 +439,8 @@ hr {
       margin-left: auto;
       margin-right: auto;
     }
+  }
+  .error {
+    color: red;
   }
 }

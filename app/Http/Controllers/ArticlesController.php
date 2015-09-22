@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InquiryPostRequest;
 use App\Orm\Article;
 use App\Http\Requests\ArticlesPostCreateRequest;
 use App\Http\Requests\ArticlesNicePost;
@@ -53,7 +54,6 @@ class ArticlesController extends Controller
 
     /**
      * トップページ
-     *
      * @Get("/", as="articles.getIndex")
      * @Middleware("analysis")
      * @param Request $request
@@ -61,7 +61,6 @@ class ArticlesController extends Controller
      */
     public function getIndex(Request $request)
     {
-        $param = $this->getCommonDatas();
         $param['conditions'] = $request->all();
         $param['userId'] = $this->userService->getUserId($request);
         $param['articles'] = $this->articleService->get($param['conditions']);
@@ -70,7 +69,7 @@ class ArticlesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 記事登録
      * @Post("/", as="articles.postArticle")
      * @param ArticlesPostCreateRequest $request
      * @return Response
@@ -120,8 +119,31 @@ class ArticlesController extends Controller
      */
     public function getHelp()
     {
-        $param = $this->getCommonDatas();
-        return view('article.help', $param);
+        return view('article.help');
+    }
+
+    /**
+     * 問い合わせ
+     * @Get("/inquiry", as="articles.getInquiry")
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function getInquiry()
+    {
+        return view('article.inquiry');
+    }
+
+    /**
+     * 問い合わせ登録
+     * @Post("/inquiry", as="articles.postInquiry")
+     * @param InquiryPostRequest $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function postInquiry(InquiryPostRequest $request)
+    {
+        $data = $request->all();
+        $this->articleService->inquirySendMail($data);
+
+        return view('article.inquiry', ['flg' => true]);
     }
 
     /**

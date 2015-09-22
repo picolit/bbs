@@ -3,7 +3,7 @@
 @extends('base')
 
 @section('content')
-<div class="help-content">
+<div class="common-content">
     <div class="title">
         ヘルプ
     </div>
@@ -29,6 +29,10 @@
         <span>
             書き込みをすると追加機能として画像を載せることができます。<br>
             無修正局部や画像などの掲載は削除します。
+        </span>
+        <h4>お問い合わせ</h4>
+        <span>
+            <a href="{!! route('articles.getInquiry') !!}">こちら</a>
         </span>
         <div class="back-box">
             <a class="btn link-btn" href="{!! route('articles.getIndex') !!}">戻る</a>

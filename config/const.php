@@ -122,4 +122,7 @@ return [
         '<iframe src="http://www.mmaaxx.com/table/carib/index05.html?affid=179755" width="495" height="210" frameborder="no" scrolling="no"></iframe>',
         '<iframe src="http://www.mmaaxx.com/table/netcomic/index05.html?affid=179755" width="496" height="151" frameborder="no" scrolling="no"></iframe>',
     ],
+    'links' => [
+        '<a href="http://erolist.xyz/" target="_blank">アダルト相互リンクSEO「エロリスト」</a>',
+    ]
 ];

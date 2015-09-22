@@ -284,6 +284,29 @@ hr {
     display: table-cell;
     padding: 5px 10px 10px 0px; }
 
+.contents-link {
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 4px; }
+  .contents-link .title {
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #4e69a2;
+    color: white;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-radius: 4px; }
+  .contents-link .links {
+    padding: 5px; }
+    .contents-link .links ul {
+      display: block;
+      padding-left: 5px; }
+      .contents-link .links ul li {
+        display: block; }
+
 .post-title {
   background-color: #4e69a2;
   color: white;

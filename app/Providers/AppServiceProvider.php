@@ -24,7 +24,8 @@ class AppServiceProvider extends ServiceProvider
         $result['prefecturesList'] = Config::get('const.prefectures');
         $result['thumbnail_img_path'] = Config::get('const.thumbnail_img_path');
         $result['original_img_path'] = Config::get('const.original_img_path');
-        $result['affiliatesList'] = (Config::get('const.affiliate'));
+        $result['affiliatesList'] = Config::get('const.affiliate');
+        $result['links'] = Config::get('const.links');
         shuffle($result['affiliatesList']);
 
         foreach ($result as $key => $value) {

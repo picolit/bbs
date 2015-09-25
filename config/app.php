@@ -152,6 +152,7 @@ return [
         'Collective\Html\HtmlServiceProvider',
         'App\Providers\AnnotationsServiceProvider',
         'Intervention\Image\ImageServiceProvider',
+        'Laravel\Socialite\SocialiteServiceProvider',
     ],
 
     /*
@@ -207,6 +208,7 @@ return [
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
         'Image' => 'Intervention\Image\Facades\Image',
+        'Socialite' => 'Laravel\Socialite\Facades\Socialite',
     ],
 
 ];

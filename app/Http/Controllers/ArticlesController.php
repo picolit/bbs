@@ -57,7 +57,7 @@ class ArticlesController extends Controller
      * @Get("/", as="articles.getIndex")
      * @Middleware("analysis")
      * @param Request $request
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function getIndex(Request $request)
     {
@@ -72,7 +72,7 @@ class ArticlesController extends Controller
      * 記事登録
      * @Post("/", as="articles.postArticle")
      * @param ArticlesPostCreateRequest $request
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function postArticle(ArticlesPostCreateRequest $request)
     {
@@ -98,7 +98,7 @@ class ArticlesController extends Controller
      * @Get("/delete/{id}/{password}", as="articles.getDelete", where={"id": "[0-9]+"})
      * @param string $id
      * @param string $password
-     * @return  \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     * @return  \Illuminate\Http\Response
      */
     public function getDelete($id, $password)
     {
@@ -115,7 +115,7 @@ class ArticlesController extends Controller
     /**
      * ヘルプ
      * @Get("/help", as="articles.getHelp")
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     * @return \Illuminate\Http\Response
      */
     public function getHelp()
     {
@@ -125,7 +125,7 @@ class ArticlesController extends Controller
     /**
      * 問い合わせ
      * @Get("/inquiry", as="articles.getInquiry")
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     * @return \Illuminate\Http\Response
      */
     public function getInquiry()
     {
@@ -136,7 +136,7 @@ class ArticlesController extends Controller
      * 問い合わせ登録
      * @Post("/inquiry", as="articles.postInquiry")
      * @param InquiryPostRequest $request
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     * @return \Illuminate\Http\Response
      */
     public function postInquiry(InquiryPostRequest $request)
     {
@@ -150,7 +150,7 @@ class ArticlesController extends Controller
      * エロいいねの作成
      * @Post("/ajax/nice/create", as="articles.postNice")
      * @param ArticlesNicePost $request
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     * @return string
      */
     public function ajaxPostCreateNice(ArticlesNicePost $request)
     {
@@ -171,7 +171,7 @@ class ArticlesController extends Controller
      *
      * @Post("/ajax/nice/delete", as="articles.deleteNice")
      * @param ArticleNicePost $request
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     * @return string
      */
     public function ajaxPostDeleteNice(ArticleNicePost $request)
     {
@@ -185,22 +185,5 @@ class ArticlesController extends Controller
         }
 
         return response();
-    }
-
-    private function getCommonDatas()
-    {
-        $result = [];
-        $result['interestsList'] = $this->interest->get();
-        $result['keyword'] = $result['interestsList']->pluck('name')->toArray();
-        $result['sexList'] = Config::get('const.sex');
-        $result['ageList'] = Config::get('const.age');
-        $result['areaList'] = Config::get('const.area');
-        $result['prefecturesList'] = Config::get('const.prefectures');
-        $result['thumbnail_img_path'] = Config::get('const.thumbnail_img_path');
-        $result['original_img_path'] = Config::get('const.original_img_path');
-        $result['affiliatesList'] = (Config::get('const.affiliate'));
-        shuffle($result['affiliatesList']);
-
-        return $result;
     }
 }

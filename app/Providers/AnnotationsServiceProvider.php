@@ -16,7 +16,10 @@ class AnnotationsServiceProvider extends ServiceProvider {
      *
      * @var array
      */
-    protected $scanRoutes = [];
+    protected $scanRoutes = [
+        \App\Http\Controllers\ArticlesController::class,
+        \App\Http\Controllers\LoginController::class,
+    ];
 
     /**
      * The classes to scan for model annotations.
@@ -38,7 +41,7 @@ class AnnotationsServiceProvider extends ServiceProvider {
      *
      * @var bool
      */
-    protected $scanControllers = true;
+    protected $scanControllers = false;
 
     /**
      * Determines whether or not to automatically scan all namespaced

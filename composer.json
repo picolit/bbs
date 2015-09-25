@@ -13,7 +13,8 @@
         "laravelcollective/annotations": "5.1.*",
         "laravelcollective/html": "~5.0",
         "intervention/image": "^2.3",
-        "predis/predis": "~1.0"
+        "predis/predis": "~1.0",
+        "laravel/socialite": "~2.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",

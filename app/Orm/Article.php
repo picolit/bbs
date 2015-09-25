@@ -88,15 +88,13 @@ class Article extends Model
         }
 
         if ($hasInterests) {
-            $query->whereHas('interests', function ($query) use ($conditions, $interests, $keys) {
-                $interestCondition = [];
-                foreach ($interests as $row) {
-                    if (in_array($row->name_tag, $keys)) {
-                        $interestCondition[] = $row->id;
-                    }
+            foreach ($interests as $row) {
+                if (in_array($row->name_tag, $keys)) {
+                    $query->whereHas('interests', function ($query) use ($row) {
+                        $query->where('id', $row->id);
+                    });
                 }
-                $query->whereIn('interests.id', $interestCondition);
-            });
+            }
         }
 
         $query->where('res_id', 0);

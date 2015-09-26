@@ -7,6 +7,7 @@ $(document).ready(function(){
         replyArticleShow(replyId);
     }
 
+    // エロイネ押下時
     $(".nice-btn").on("click", function() {
         var $niceLink = $(this).find('a');
         var id = $(this).data('id');
@@ -55,6 +56,10 @@ function replyArticleShow(id) {
     var $replyArticle = $("#reply-article");
     $replyArticle.children().remove();
     $replyArticle.append($(article).clone());
+
+    // タイトル設定
+    var replayTitle = "Re: " + ($(article).find('.article-title').text());
+    $(".post-form").find("input[name=title]").val(replayTitle);
 
     // hiddenのidを変更
     $("input[name='parent_id']").val(id);

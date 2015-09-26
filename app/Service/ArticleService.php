@@ -7,6 +7,7 @@ use App\Jobs\TwetterTweet;
 use \App\Orm\Article;
 use App\Orm\Interest;
 use App\Orm\Photo;
+use Carbon\Carbon;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Support\Facades\DB;
@@ -79,11 +80,11 @@ class ArticleService
             if ($this->article->{'res_id'} !== '0') {
                 $article = $this->article->newInstance();
                 $parentArticle = $article->find($this->article->{'res_id'});
+                $parentArticle->updated_at = Carbon::now();
+                $parentArticle->save();
 
                 if ($parentArticle->mail) {
                     Log::info('replay mail set queue. id: ' . $this->article->{'id'});
-                    $this->article->{'toName'} = $parentArticle->{'name'};
-                    $this->article->{'parentMail'} = $parentArticle->{'mail'};
                     $this->dispatch(new ReplySendEmail($parentArticle, $this->article));
                 }
             }

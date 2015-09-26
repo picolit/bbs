@@ -12,6 +12,7 @@
             @endif
         </div>
     </div>
+    <hr>
     <div class="interest">
         <span class="on">興味</span>
 
@@ -30,11 +31,15 @@
     <div class="article-body">
         {!! nl2br(htmlentities($row->body)) !!}
     </div>
-    <div>
+    @if(!$row->photos->isEmpty())
+        <hr>
+    @endif
+    <div class="article-photo">
         @foreach($row->photos as $photoRow)
-            <a href="{{ $original_img_path.$photoRow->file_name}}">{!! Html::image($thumbnail_img_path.$photoRow->file_name, null,['style' => 'height:100px']) !!}</a>
+            <a href="{{ $original_img_path.$photoRow->file_name}}">{!! Html::image($thumbnail_img_path.$photoRow->file_name, null,['style' => 'height:140px']) !!}</a>
         @endforeach
     </div>
+    <hr>
     <div>
         <div class="article-footer">
                 <div class="replay-btn">

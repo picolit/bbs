@@ -108,6 +108,13 @@ hr {
   padding: 10px;
   background-color: white;
   border-radius: 2px; }
+  .article_box .article-body {
+    font-size: 13px;
+    border-radius: 4px;
+    margin: 10px 0px 10px 0px;
+    padding: 5px; }
+  .article_box .article-photo {
+    text-align: center; }
 
 .name {
   font-size: 16px;
@@ -134,13 +141,6 @@ hr {
 .article-title {
   font-weight: bold;
   font-size: 16px; }
-
-.article-body {
-  font-size: 13px;
-  background-color: white;
-  border-radius: 4px;
-  margin: 10px 0px 10px 0px;
-  padding: 5px; }
 
 .article-header {
   display: table;
@@ -232,7 +232,7 @@ hr {
   margin: 7px 0 0 5px; }
 
 .thumb {
-  width: 258px; }
+  width: 255px; }
 
 .post-form .error {
   border: 2px solid;

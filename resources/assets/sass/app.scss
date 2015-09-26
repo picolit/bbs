@@ -144,7 +144,17 @@ hr {
 .article_box {
   padding:10px;
   background-color: white;
-  border-radius: 2px
+  border-radius: 2px;
+  .article-body {
+    font-size: 13px;
+    //background-color: white;
+    border-radius: $radius;
+    margin: 10px 0px 10px 0px;
+    padding: 5px;
+  }
+  .article-photo {
+    text-align: center;
+  }
 }
 
 .name {
@@ -177,14 +187,6 @@ hr {
 .article-title {
   font-weight: bold;
   font-size: 16px;
-}
-
-.article-body {
-  font-size: 13px;
-  background-color: white;
-  border-radius: $radius;
-  margin: 10px 0px 10px 0px;
-  padding: 5px;
 }
 
 .article-header {
@@ -301,7 +303,7 @@ hr {
 }
 
 .thumb{
-  width: 258px;
+  width: 255px;
 }
 
 .post-form .error {

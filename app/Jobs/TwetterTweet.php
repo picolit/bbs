@@ -30,6 +30,11 @@ class TwetterTweet extends Job implements SelfHandling
      */
     public function handle()
     {
+        if (evn('APP_ENV') !== 'production') {
+            Log::info(sprintf('this env is %s. tweet not publish.'), evn('APP_ENV'));
+            return;
+        }
+
         $body = "{$this->article->name} \n {$this->article->title} \n {$this->article->body}";
         if ((self::MAX_LENGTH - 30) < (mb_strlen($body))) {
             $body = mb_substr($body, 0, self::MAX_LENGTH - 30) . '…';

@@ -124,5 +124,6 @@ return [
     ],
     'links' => [
         '<a href="http://erolist.xyz/" target="_blank">アダルト相互リンクSEO「エロリスト」</a>',
+        '<a href="http://adult-links1.com/" target="_blank">アダルト相互リンク adult-links1</a>',
     ]
 ];

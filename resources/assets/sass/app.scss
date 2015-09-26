@@ -145,6 +145,21 @@ hr {
   padding:10px;
   background-color: white;
   border-radius: 2px;
+  .interest {
+    margin-top: 4px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    color: $base_color;
+  }
+  .article-interest-title{
+    float: left;
+    margin-right: 10px;
+  }
+  .article-interest-value {
+    float: left;
+    width: 450px;
+  }
   .article-body {
     font-size: 13px;
     //background-color: white;
@@ -162,12 +177,6 @@ hr {
   font-weight: bold;
   color: #3b5998;
   margin-bottom: 5px;
-}
-
-.interest {
-  font-weight: bold;
-  font-size: 12px;
-  color: $base_color;
 }
 
 .interest .on {
@@ -232,7 +241,8 @@ hr {
     display: table-cell;
   }
   .created-at {
-    display: table-cell;
+    //display: table-cell;
+    text-align: right;
   }
 }
 

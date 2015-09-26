@@ -108,6 +108,18 @@ hr {
   padding: 10px;
   background-color: white;
   border-radius: 2px; }
+  .article_box .interest {
+    margin-top: 4px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    color: #4e69a2; }
+  .article_box .article-interest-title {
+    float: left;
+    margin-right: 10px; }
+  .article_box .article-interest-value {
+    float: left;
+    width: 450px; }
   .article_box .article-body {
     font-size: 13px;
     border-radius: 4px;
@@ -121,11 +133,6 @@ hr {
   font-weight: bold;
   color: #3b5998;
   margin-bottom: 5px; }
-
-.interest {
-  font-weight: bold;
-  font-size: 12px;
-  color: #4e69a2; }
 
 .interest .on {
   color: #4e69a2;
@@ -176,7 +183,7 @@ hr {
   .article-footer .nice-count {
     display: table-cell; }
   .article-footer .created-at {
-    display: table-cell; }
+    text-align: right; }
 
 /** post **/
 .post-form {

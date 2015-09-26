@@ -13,21 +13,22 @@
         </div>
     </div>
     <hr>
-    <div class="interest">
-        <span class="on">興味</span>
-
-        @foreach($interestsList as $val)
-            @if(in_array($val->name_tag, $row->interests->pluck('name_tag')->toArray()))
-                <a class="on" href="#">{{ $val->name }}</a>
-            @else
-                <span class="off">{{ $val->name }}</span>
-            @endif
-        @endforeach
-    </div>
     <div>
         <span class="article-title">{{ $row->title}}</span>
     </div>
-    <hr>
+    <div class="interest">
+        <div class="on article-interest-title">興味</div>
+        <div class="article-interest-value">
+            @foreach($interestsList as $val)
+                @if(in_array($val->name_tag, $row->interests->pluck('name_tag')->toArray()))
+                    <a class="on" href="#">{{ $val->name }}</a>
+                @else
+                    <span class="off">{{ $val->name }}</span>
+                @endif
+            @endforeach
+        </div>
+    </div>
+    <hr style="clear:left">
     <div class="article-body">
         {!! nl2br(htmlentities($row->body)) !!}
     </div>
@@ -58,7 +59,7 @@
                     </div>
                 </div>
                 <div class="nice-count"><span>{{$row->nices->count()}}</span>人がエロイイネと言っています</div>
-                <div class="created-at"><div class="created-at">{{$row->created_at}}</div></div>
+                <div class="created-at"><span class="created-at">{{$row->created_at}}</span></div>
         </div>
     </div>
 </div>

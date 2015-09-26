@@ -13,7 +13,6 @@ use App\Service\ArticleService;
 use App\Http\Requests\ArticleNicePost;
 use App\Service\UserService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 
 /**
  * Class ArticleController

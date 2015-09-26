@@ -153,6 +153,7 @@ return [
         'App\Providers\AnnotationsServiceProvider',
         'Intervention\Image\ImageServiceProvider',
         'Laravel\Socialite\SocialiteServiceProvider',
+        'Thujohn\Twitter\TwitterServiceProvider',
     ],
 
     /*
@@ -209,6 +210,7 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         'Image' => 'Intervention\Image\Facades\Image',
         'Socialite' => 'Laravel\Socialite\Facades\Socialite',
+        'Twitter' => 'Thujohn\Twitter\Facades\Twitter',
     ],
 
 ];

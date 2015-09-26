@@ -3,6 +3,7 @@
 
 use App\Jobs\InquirySendEmail;
 use App\Jobs\ReplySendEmail;
+use App\Jobs\TwetterTweet;
 use \App\Orm\Article;
 use App\Orm\Interest;
 use App\Orm\Photo;
@@ -29,22 +30,18 @@ class ArticleService
     private $analysisService;
     /** @var Interest */
     private $interest;
-    /** @var Mailer */
-    private $mailer;
 
     /**
      * Constructor
      * @param Article $article
      * @param AnalysisService $analysisService
      * @param Interest $interest
-     * @param Mailer $mailer
      */
-    public function __construct(Article $article, AnalysisService $analysisService, Interest $interest, Mailer $mailer)
+    public function __construct(Article $article, AnalysisService $analysisService, Interest $interest)
     {
         $this->article = $article;
         $this->analysisService = $analysisService;
         $this->interest = $interest;
-        $this->mailer = $mailer;
     }
 
     /**
@@ -117,6 +114,9 @@ class ArticleService
             if ($this->article->{'res_id'} === "0") {
                 $this->analysisService->newPostIncrement();
             }
+
+            // tweet
+            $this->dispatch(new TwetterTweet($this->article));
         });
     }
 

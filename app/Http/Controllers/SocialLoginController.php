@@ -9,14 +9,14 @@ use Laravel\Socialite\Facades\Socialite;
 
 /**
  * Class LoginController
- * @Controller(prefix="/login")
+ * @Controller(prefix="/social/login")
  * @package App\Http\Controllers
  */
-class LoginController extends Controller
+class SocialLoginController extends Controller
 {
     /**
      * ログインページ
-     * @Get("/", as="login.getIndex")
+     * @Get("/", as="social.login.getIndex")
      * @return \Illuminate\Http\Response
      */
     public function getIndex()
@@ -30,7 +30,7 @@ class LoginController extends Controller
 
     /**
      * ソーシャルログイン処理
-     * @Get("/{provider}/authorize", as="login.getAuthorize")
+     * @Get("/{provider}/authorize", as="social.login.getAuthorize")
      * @param string $provider
      * @return \Illuminate\Http\Response
      */
@@ -41,7 +41,7 @@ class LoginController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @Get("/{provider}/login", as="login.getLogin")
+     * @Get("/{provider}/callback", as="social.login.getLogin")
      * @param string $provider
      * @return \Illuminate\Http\Response
      */

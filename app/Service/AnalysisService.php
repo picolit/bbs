@@ -30,7 +30,7 @@ class AnalysisService
      */
     public function pageViewIncrement()
     {
-        DB::update('update analyses set page_view = page_view + 1 where date = ?', [$this->date]);
+        DB::update('update analyses set page_view = page_view + 1, updated_at = now() where date = ?', [$this->date]);
     }
 
     /**
@@ -38,9 +38,12 @@ class AnalysisService
      */
     public function newPostIncrement()
     {
-        DB::update('update analyses set new_post = new_post + 1 where date = ?', [$this->date]);
+        DB::update('update analyses set new_post = new_post + 1, updated_at = now() where date = ?', [$this->date]);
     }
 
+    /**
+     * レコード作成処理
+     */
     private function existRecord()
     {
         $analysis = $this->analysis->where('date', $this->date)->first();

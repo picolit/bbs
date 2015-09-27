@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Jobs\Job;
 use App\Orm\Article;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Support\Facades\Log;
@@ -30,8 +29,8 @@ class TwetterTweet extends Job implements SelfHandling
      */
     public function handle()
     {
-        if (evn('APP_ENV') !== 'production') {
-            Log::info(sprintf('this env is %s. tweet not publish.'), evn('APP_ENV'));
+        if (env('APP_ENV') !== 'production') {
+            Log::info(sprintf('this env is %s. tweet not publish.', env('APP_ENV')));
             return;
         }
 

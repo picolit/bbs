@@ -14,4 +14,3 @@
 @section('inline-script')
     @parent
 @endsection
-

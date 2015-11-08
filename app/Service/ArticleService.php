@@ -23,8 +23,6 @@ class ArticleService
 {
     use DispatchesJobs;
 
-    const PAGENATE_PER_PAGE = 10;
-
     /** @var Article */
     private $article;
     /** @var AnalysisService */
@@ -52,7 +50,7 @@ class ArticleService
      */
     public function get(array $conditions)
     {
-        return $this->article->search($conditions)->sort()->paginate(self::PAGENATE_PER_PAGE);
+        return $this->article->search($conditions)->sort();
     }
 
     /**

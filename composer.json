@@ -12,10 +12,11 @@
         "barryvdh/laravel-ide-helper": "^2.0",
         "laravelcollective/annotations": "5.1.*",
         "laravelcollective/html": "~5.0",
-        "intervention/image": "^2.3",
-        "predis/predis": "~1.0",
-        "laravel/socialite": "~2.0",
-        "thujohn/twitter": "^2.0"
+        "intervention/image": "^2.3", // gdをラップした画像ライブラリ
+        "predis/predis": "~1.0", // redis
+        "laravel/socialite": "~2.0", // ソーシャルログイン
+        "thujohn/twitter": "^2.0", // ツイッター投稿
+        "hisorange/browser-detect": "2.*" // ブラウザ判定
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",

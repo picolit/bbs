@@ -18,6 +18,7 @@ class AnnotationsServiceProvider extends ServiceProvider {
      */
     protected $scanRoutes = [
         \App\Http\Controllers\ArticlesController::class,
+        \App\Http\Controllers\Sp\SpArticlesController::class,
         \App\Http\Controllers\SocialLoginController::class,
     ];
 

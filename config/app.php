@@ -154,6 +154,7 @@ return [
         'Intervention\Image\ImageServiceProvider',
         'Laravel\Socialite\SocialiteServiceProvider',
         'Thujohn\Twitter\TwitterServiceProvider',
+        'hisorange\BrowserDetect\Provider\BrowserDetectService',
     ],
 
     /*
@@ -211,6 +212,7 @@ return [
         'Image' => 'Intervention\Image\Facades\Image',
         'Socialite' => 'Laravel\Socialite\Facades\Socialite',
         'Twitter' => 'Thujohn\Twitter\Facades\Twitter',
+        'BrowserDetect' => 'hisorange\BrowserDetect\Facade\Parser',
     ],
 
 ];

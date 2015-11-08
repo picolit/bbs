@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<!-- MEMO: update me with `git checkout gh-pages && git merge master && git push origin gh-pages` -->
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap Material</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dist/css/roboto.min.css" rel="stylesheet">
+    <link href="../dist/css/material-fullpalette.min.css" rel="stylesheet">
+    <link href="../dist/css/ripples.min.css" rel="stylesheet">
+    <link href="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.css" rel="stylesheet">
+    <link href="../sass/sp.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #banner {
+            border-bottom: none
+        }
+
+        .page-header h1 {
+            font-size: 4em
+        }
+
+        .bs-docs-section {
+            margin-top: 8em
+        }
+
+        .bs-component {
+            position: relative
+        }
+
+        .bs-component .modal {
+            position: relative;
+            top: auto;
+            right: auto;
+            left: auto;
+            bottom: auto;
+            z-index: 1;
+            display: block
+        }
+
+        .bs-component .modal-dialog {
+            width: 90%
+        }
+
+        .bs-component .popover {
+            position: relative;
+            display: inline-block;
+            width: 220px;
+            margin: 20px
+        }
+
+        #source-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 100;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        .progress {
+            margin-bottom: 10px
+        }
+
+        footer {
+            margin: 5em 0
+        }
+
+        footer li {
+            float: left;
+            margin-right: 1.5em;
+            margin-bottom: 1.5em
+        }
+
+        footer p {
+            clear: left;
+            margin-bottom: 0
+        }
+
+        .splash {
+            padding: 4em 0 0;
+            background-color: #141d27;
+            color: #fff;
+            text-align: center
+        }
+
+        .splash h1 {
+            font-size: 4em
+        }
+
+        .splash #social {
+            margin: 2em 0
+        }
+
+        .splash .alert {
+            margin: 2em 0
+        }
+
+        .section-tout {
+            padding: 4em 0 3em;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background-color: #eaf1f1
+        }
+
+        .section-tout .fa {
+            margin-right: .5em
+        }
+
+        .section-tout p {
+            margin-bottom: 3em
+        }
+
+        .section-preview {
+            padding: 4em 0 4em
+        }
+
+        .section-preview .preview {
+            margin-bottom: 4em;
+            background-color: #eaf1f1
+        }
+
+        .section-preview .preview .image {
+            position: relative
+        }
+
+        .section-preview .preview .image:before {
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            content: "";
+            pointer-events: none
+        }
+
+        .section-preview .preview .options {
+            padding: 1em 2em 2em;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-top: none;
+            text-align: center
+        }
+
+        .section-preview .preview .options p {
+            margin-bottom: 2em
+        }
+
+        .section-preview .dropdown-menu {
+            text-align: left
+        }
+
+        .section-preview .lead {
+            margin-bottom: 2em
+        }
+
+        @media (max-width: 767px) {
+            .section-preview .image img {
+                width: 100%
+            }
+        }
+
+        .sponsor {
+            text-align: center
+        }
+
+        .sponsor a:hover {
+            text-decoration: none
+        }
+
+        @media (max-width: 767px) {
+            #banner {
+                margin-bottom: 2em;
+                text-align: center
+            }
+        }
+
+        .infobox .btn-sup {
+            color: rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 30px;
+        }
+
+        .infobox .btn-sup img {
+            opacity: 0.5;
+            height: 30px;
+        }
+
+        .infobox .btn-sup span {
+            padding-left: 10px;
+            position: relative;
+            top: 2px;
+        }
+
+        .icons-material .row {
+            margin-bottom: 20px;
+        }
+
+        .icons-material .col-xs-2 {
+            text-align: center;
+        }
+
+        .icons-material i {
+            font-size: 34pt;
+        }
+
+        .icon-preview {
+            display: inline-block;
+            padding: 10px;
+            margin: 10px;
+            background: #D5D5D5;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .icon-preview span {
+            display: none;
+            position: absolute;
+            background: black;
+            color: #EEE;
+            padding: 5px 8px;
+            font-size: 15px;
+            font-family: Roboto;
+            border-radius: 2px;
+            z-index: 10;
+        }
+
+        .icon-preview:hover i {
+            color: #4285f4;
+        }
+
+        .icon-preview:hover span {
+            display: block;
+            cursor: text;
+        }
+
+    </style>
+</head>
+<body>
+
+<p class="post-title"><span>新規投稿</span></p>
+<div class="container">
+    <form class="form-horizontal">
+        <fieldset>
+            <div class="form-group">
+                <label for="inputName" class="col-lg-2 control-label">お名前</label>
+
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="inputName" placeholder="お名前（必須）">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputTitle" class="col-lg-2 control-label">タイトル</label>
+
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="inputTitle" placeholder="タイトル">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="col-lg-2 control-label">パスワード</label>
+
+                <div class="col-lg-10">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="パスワード">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sex" class="col-lg-2 control-label">見た目</label>
+
+                <div class="col-lg-10">
+                    <select class="form-control" id="sex">
+                        <option>男性</option>
+                        <option>男性意外</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="age" class="col-lg-2 control-label">年代</label>
+
+                <div class="col-lg-10">
+                    <select class="form-control" id="age">
+                        <option>秘密</option>
+                        <option>10代</option>
+                        <option>20代</option>
+                        <option>30代</option>
+                        <option>40代</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="prefectures" class="col-lg-2 control-label">都道府県</label>
+
+                <div class="col-lg-10">
+                    <select class="form-control" id="prefectures">
+                        <option>秘密</option>
+                        <option>北海道</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mail" class="col-lg-2 control-label">メールアドレス</label>
+
+                <div class="col-lg-10">
+                    <input type="email" class="form-control" id="mail" placeholder="メールアドレス">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="textArea" class="col-lg-2 control-label">本文</label>
+
+                <div class="col-lg-10">
+                    <textarea class="form-control" rows="7" id="textArea"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="textArea" class="col-lg-2 control-label">趣味</label>
+                <div class="checkbox interests" >
+                    <label>
+                        <input type="checkbox"> 女装　　
+                    </label>
+                    <label>
+                        <input type="checkbox"> マゾ　　
+                    </label>
+                    <label>
+                        <input type="checkbox"> サド　　
+                    </label>
+                    <label>
+                        <input type="checkbox"> 露出　　
+                    </label>
+                    <label>
+                        <input type="checkbox"> 熟女　　
+                    </label>
+                    <label>
+                        <input type="checkbox"> アナル　
+                    </label>
+                    <label>
+                        <input type="checkbox"> ＳＭ　　
+                    </label>
+                    <label>
+                        <input type="checkbox"> コスプレ
+                    </label>
+                    <label>
+                        <input type="checkbox"> 痴女　　
+                    </label>
+                    <label>
+                        <input type="checkbox"> レズ　　
+                    </label>
+                    <label>
+                        <input type="checkbox"> ゲイ　　
+                    </label>
+                    <label>
+                        <input type="checkbox"> オナニー
+                    </label>
+                    <label>
+                        <input type="checkbox"> 緊縛　　
+                    </label>
+                    <label>
+                        <input type="checkbox"> フェチ　
+                    </label>
+                    <label>
+                        <input type="checkbox"> 露出
+                    </label>
+                </div>
+            </div>
+            <br>
+
+            <div class="form-group">
+                <label for="inputFile1" class="col-lg-2 control-label">添付ファイル１</label>
+
+                <div class="col-lg-10">
+                    <input type="text" readonly="" class="form-control floating-label" placeholder="Browse...">
+                    <input type="file" id="inputFile1" multiple="">
+                </div>
+                <label for="inputFile2" class="col-lg-2 control-label">添付ファイル２</label>
+
+                <div class="col-lg-10">
+                    <input type="text" readonly="" class="form-control floating-label" placeholder="Browse...">
+                    <input type="file" id="inputFile2" multiple="">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="post-btn col-lg-10 col-lg-offset-2">
+                    <button class="btn btn-default">戻る</button>
+                    <button type="submit" class="btn btn-primary">投　稿</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<br>
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script>
+    (function () {
+
+        var $button = $("<div id='source-button' class='btn btn-primary btn-xs'>&lt; &gt;</div>").click(function () {
+            var index = $('.bs-component').index($(this).parent());
+            $.get(window.location.href, function (data) {
+                var html = $(data).find('.bs-component').eq(index).html();
+                html = cleanSource(html);
+                $("#source-modal pre").text(html);
+                $("#source-modal").modal();
+            })
+
+        });
+
+        $('.bs-component [data-toggle="popover"]').popover();
+        $('.bs-component [data-toggle="tooltip"]').tooltip();
+
+        $(".bs-component").hover(function () {
+            $(this).append($button);
+            $button.show();
+        }, function () {
+            $button.hide();
+        });
+
+        function cleanSource(html) {
+            var lines = html.split(/\n/);
+
+            lines.shift();
+            lines.splice(-1, 1);
+
+            var indentSize = lines[0].length - lines[0].trim().length,
+                    re = new RegExp(" {" + indentSize + "}");
+
+            lines = lines.map(function (line) {
+                if (line.match(re)) {
+                    line = line.substring(indentSize);
+                }
+
+                return line;
+            });
+
+            lines = lines.join("\n");
+
+            return lines;
+        }
+
+        $(".icons-material .icon").each(function () {
+            $(this).after("<br><br><code>" + $(this).attr("class").replace("icon ", "") + "</code>");
+        });
+
+    })();
+
+</script>
+<script src="../dist/js/ripples.min.js"></script>
+<script src="../dist/js/material.min.js"></script>
+<script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
+<script>
+    $(function () {
+        $.material.init();
+        $(".shor").noUiSlider({
+            start: 40,
+            connect: "lower",
+            range: {
+                min: 0,
+                max: 100
+            }
+        });
+
+        $(".svert").noUiSlider({
+            orientation: "vertical",
+            start: 40,
+            connect: "lower",
+            range: {
+                min: 0,
+                max: 100
+            }
+        });
+    });
+</script>
+</body>
+</html>
+

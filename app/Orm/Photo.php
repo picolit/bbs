@@ -1,6 +1,7 @@
 <?php namespace App\Orm;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Photo
@@ -8,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Photo extends Model
 {
+    use SoftDeletes;
+
     protected $guarded = ['id'];
 
     /**

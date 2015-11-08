@@ -13,6 +13,7 @@ use App\Service\ArticleService;
 use App\Http\Requests\ArticleNicePost;
 use App\Service\UserService;
 use Illuminate\Http\Request;
+use hisorange\BrowserDetect\Facade\Parser;
 
 /**
  * Class ArticleController
@@ -21,6 +22,8 @@ use Illuminate\Http\Request;
  */
 class ArticlesController extends Controller
 {
+    const PAGENATE_PER_PAGE = 10;
+
     /** @var  Article */
     protected $article;
     /** @var  ArticleService */
@@ -60,11 +63,15 @@ class ArticlesController extends Controller
      */
     public function getIndex(Request $request)
     {
-        $param['conditions'] = $request->all();
-        $param['userId'] = $this->userService->getUserId($request);
-        $param['articles'] = $this->articleService->get($param['conditions']);
+        if (Parser::isMobile()) {
+            return view('sp/article/index');
+        } else {
+            $param['conditions'] = $request->all();
+            $param['userId'] = $this->userService->getUserId($request);
+            $param['articles'] = $this->articleService->get($param['conditions'])->paginate(self::PAGENATE_PER_PAGE);;
 
-        return view('article.index', $param);
+            return view('article.index', $param);
+        }
     }
 
     /**

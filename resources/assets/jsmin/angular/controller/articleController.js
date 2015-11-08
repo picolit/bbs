@@ -1,0 +1,1 @@
+angular.module("myApp",["ngResource"]).controller("MyController",["$scope","$resource",function(o,e){var r=e("/sp/articles");console.log(r.query())}]);

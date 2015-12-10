@@ -148,12 +148,12 @@ class ArticleService
         Log::debug($fileObject->getPath());
         Log::debug($fileObject->getFilename());
         Log::debug($fileObject->getBasename());
-        Log::debug($fileObject->getMimeType());
+        Log::debug($fileObject->getClientMimeType());
         Log::debug($fileObject->getExtension());
         Log::debug($fileObject->getType());
 
         $result = [];
-        $mimeType = $fileObject->getMimeType();
+        $mimeType = $fileObject->getClientMimeType();
 
         // upload_igm and thumbnail directory make
         $dirName = date('Ym');
@@ -163,7 +163,7 @@ class ArticleService
         $this->chkDir($uploadDir);
         $this->chkDir($thumbnailDir);
 //@todo オリジナル動画をリサイズする
-        $extension = explode('/', $fileObject->getMimeType())[1];
+        $extension = explode('/', $fileObject->getClientMimeType())[1];
         $newFileName = sha1($fileObject->getFilename() . time()) . '.' . $extension;
         $saveFileName = $uploadDir . '/' . $newFileName;
         $fileObject->move($uploadDir, $newFileName);

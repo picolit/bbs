@@ -5,6 +5,13 @@
 
     RewriteEngine On
 
+    # HTTPでアクセスされた場合、
+    RewriteCond %{HTTPS} off
+    # 以下のURLは常に https にリダイレクトする
+    RewriteCond %{HTTP_HOST} peach-x.pw
+    # https にリダイレクト
+    RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
     # Redirect Trailing Slashes...
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 

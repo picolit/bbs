@@ -76,6 +76,9 @@ class Article extends Model
             $query->whereIn('prefectures', $areaPrefectures);
         }
 
+        // test 投稿を無視
+        $query->where('name','<>' , 'test');
+
         $hasInterests = false;
         $interests = Interest::all();
         $keys = array_keys($conditions);

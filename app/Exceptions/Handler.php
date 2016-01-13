@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Jobs\ExceptionEmail;
 use Exception;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -27,6 +28,8 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
+        new ExceptionEmail($e);
+
         return parent::report($e);
     }
 

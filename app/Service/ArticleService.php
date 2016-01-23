@@ -13,6 +13,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Intervention\Image\Facades\Image;
+use Mockery\CountValidator\Exception;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**

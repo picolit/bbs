@@ -1,11 +1,11 @@
 <?php namespace App\Http\Requests;
 
 /**
- * Class InquiryPostRequest
+ * Class DirectMailPost
  *
  * @package App\Http\Requests
  */
-class InquiryPostRequest extends Request
+class DirectMailPost extends Request
 {
 
     /**
@@ -26,9 +26,9 @@ class InquiryPostRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name'  => 'required|max:10',
             'title' => 'required|max:50',
-            'body' => 'required|min:1|max:1024',
+            'body'  => 'required|min:1|max:1024',
             'email' => 'required|email',
         ];
     }

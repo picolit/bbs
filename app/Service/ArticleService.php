@@ -1,6 +1,7 @@
 <?php namespace App\Service;
 
 
+use App\Jobs\DirectSendMail;
 use App\Jobs\InquirySendEmail;
 use App\Jobs\ReplySendEmail;
 use App\Jobs\TwetterTweet;
@@ -8,12 +9,10 @@ use \App\Orm\Article;
 use App\Orm\Interest;
 use App\Orm\Photo;
 use Carbon\Carbon;
-use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Intervention\Image\Facades\Image;
-use Mockery\CountValidator\Exception;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -255,7 +254,19 @@ class ArticleService
     }
 
     /**
-     * @param $data
+     * 直接メール
+     * @param Article $article
+     * @param array $data
+     */
+    public function directMailSend($article, $data)
+    {
+        $this->dispatch(new DirectSendMail($article, $data));
+    }
+
+    /**
+     * 問い合わせメール
+     *
+     * @param array $data
      */
     public function inquirySendMail($data)
     {

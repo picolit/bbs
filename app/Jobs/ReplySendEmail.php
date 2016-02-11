@@ -45,6 +45,8 @@ class ReplySendEmail extends Job implements SelfHandling, ShouldQueue
         $parentArticle = $this->parentArticle;
         $article = $this->article;
 
+        Log::info('replay mail send start. id:' . $article->{'id'});
+
         // 実行試行回数のチェック
         if ($this->attempts() < 3) {
             // 再実行可能にするまで待機する秒数を指定

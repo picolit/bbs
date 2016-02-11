@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Config;
 /**
  * Class Article
  * @package App\Orm
+ *
+ * @property string mail
  */
 class Article extends Model
 {

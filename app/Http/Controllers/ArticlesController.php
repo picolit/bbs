@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DirectMailPost;
 use App\Http\Requests\InquiryPostRequest;
 use App\Orm\Article;
 use App\Http\Requests\ArticlesPostCreateRequest;
@@ -143,6 +144,35 @@ class ArticlesController extends Controller
         $this->articleService->inquirySendMail($data);
 
         return view('article.inquiry', ['flg' => true]);
+    }
+
+    /**
+     * メールで連絡ページ
+     * @Get("/mail_send/{id}", as="articles.getMailSend", where={"id": "[0-9]+"})
+     * @param string $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getMailSend($id)
+    {
+        $article = $this->article->findOrFail($id);
+        return view('article.mail_send', ['article' => $article]);
+    }
+
+    /**
+     * メールで連絡ページ
+     * @Post("/mail_send/{id}", as="articles.getMailSend", where={"id": "[0-9]+"})
+     * @param DirectMailPost $directMailPost
+     * @param string $id
+     * @return \Illuminate\Http\Response
+     */
+    public function postMailSend(DirectMailPost $directMailPost, $id)
+    {
+        $article = $this->article->findOrFail($id);
+
+        $data = $directMailPost->all();
+        $this->articleService->directMailSend($article, $data);
+
+        return view('article.mail_send', ['article' => $article, 'flg' => true]);
     }
 
     /**

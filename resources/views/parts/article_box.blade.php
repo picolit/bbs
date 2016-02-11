@@ -1,7 +1,11 @@
 <div id="id{{$row->id}}" class="{{$class}}">
     <div class="article-header">
         <div class="article-header-01">
+            @if ($row->mail)
+            <span class="name">{!! link_to_route('articles.getMailSend', $row->name, [$row->id]) !!}</span>
+            @else
             <span class="name">{{ $row->name }}</span>
+            @endif
             <span class="sex">{{ const_value('sex', $row->sex) }}</span>
             <span class="age">{{ const_value('age', $row->age) }}</span>
             <span class="prefectures">{{ const_value('prefectures', $row->prefectures) }}</span>

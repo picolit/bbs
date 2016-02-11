@@ -1,3 +1,4 @@
-{!! nl2br(htmlentities($article['body'])) !!}<br>
+{!! nl2br(htmlentities($data['body'])) !!}<br>
 <br>
-Peach-x http://peach-x.pw
+Peach-x
+http://peach-x.pw

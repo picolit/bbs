@@ -46,17 +46,18 @@ class DirectSendMail extends Job implements SelfHandling, ShouldQueue
         Log::info('direct mail send start.');
 
         // 実行試行回数のチェック
-        if ($this->attempts() < 3) {
+        if ($this->attempts() < 3)
+        {
             // 再実行可能にするまで待機する秒数を指定
             $this->release(10);
             $title = $data['name'] . 'さんからメールが届きました';
-            $replay = $data['mail'];
+            $replay = $data['email'];
 
             $mailer->send(
                 'mail.direct_send_mail',
                 ['data' => $data],
-                function ($message) use ($title, $replay) {
-
+                function ($message) use ($title, $replay)
+                {
                     $message
                         ->to($this->article->mail)
                         ->subject($title)

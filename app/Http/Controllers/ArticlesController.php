@@ -160,7 +160,7 @@ class ArticlesController extends Controller
 
     /**
      * メールで連絡ページ
-     * @Post("/mail_send/{id}", as="articles.getMailSend", where={"id": "[0-9]+"})
+     * @Post("/mail_send/{id}", as="articles.postMailSend", where={"id": "[0-9]+"})
      * @param DirectMailPost $directMailPost
      * @param string $id
      * @return \Illuminate\Http\Response

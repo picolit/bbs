@@ -28,7 +28,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
-        new ExceptionEmail($e);
+//        new ExceptionEmail($e);
 
         return parent::report($e);
     }

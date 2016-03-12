@@ -31,6 +31,7 @@ $(document).ready(function(){
 
     // 投稿ボタン押下時
     $('#post').on('click', function() {
+        $(this).hide();
         $("#myForm").submit();
     });
 

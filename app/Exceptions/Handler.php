@@ -2,8 +2,9 @@
 
 namespace App\Exceptions;
 
-use App\Jobs\ExceptionEmail;
 use Exception;
+use App\Service\SlackBot;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -28,7 +29,8 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
-//        new ExceptionEmail($e);
+        $slack = new SlackBot();
+        $slack->post($e->getMessage());
 
         return parent::report($e);
     }

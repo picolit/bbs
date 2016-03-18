@@ -7,6 +7,7 @@ use App\Service\SlackBot;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -29,8 +30,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
-        $slack = new SlackBot();
-        $slack->post($e->getMessage());
+        if (!$e instanceof NotFoundHttpException) {
+            $slack = new SlackBot();
+            $slack->post($e->getMessage() . PHP_EOL . print_r($e->getTrace()[0], true));
+        }
 
         return parent::report($e);
     }

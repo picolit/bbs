@@ -154,7 +154,12 @@ class ArticlesController extends Controller
      */
     public function getMailSend($id)
     {
-        $article = $this->article->findOrFail($id);
+        $article = $this->article->find($id);
+
+        if (empty($article)) {
+            abort(404);
+        }
+
         return view('article.mail_send', ['article' => $article]);
     }
 
@@ -167,7 +172,11 @@ class ArticlesController extends Controller
      */
     public function postMailSend(DirectMailPost $directMailPost, $id)
     {
-        $article = $this->article->findOrFail($id);
+        $article = $this->article->find($id);
+
+        if (empty($article)) {
+            abort(404);
+        }
 
         $data = $directMailPost->all();
         $this->articleService->directMailSend($article, $data);

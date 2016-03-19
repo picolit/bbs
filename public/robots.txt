@@ -1,2 +1,7 @@
 User-agent: *
-Disallow:
+Disallow: /ajax
+Disallow: /delete
+Disallow: /help
+Disallow: /inquiry
+Disallow: /mail_send
+Disallow: /social

@@ -27,8 +27,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('slack:report_send')
             ->withoutOverlapping()
-//            ->dailyAt('8:00')
-            ->hourly()
-            ->appendOutputTo('storage/logs/laravel.log');
+            ->dailyAt('8:00')
+            ->appendOutputTo('/var/www/pw.peach-x/storage/logs/laravel.log');
+
     }
 }

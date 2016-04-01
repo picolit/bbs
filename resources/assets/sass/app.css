@@ -342,7 +342,9 @@ hr {
 
 .require {
   color: red;
-  margin: 0 3px 0 0; }
+  margin: 0 3px 0 0;
+  font-size: 10px;
+}
 
 .common-content {
   background-color: white;

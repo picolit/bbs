@@ -111,10 +111,8 @@ class ArticleService
                 }
             }
 
-            // 新規記事件数インクリメント
-            if ($this->article->{'res_id'} === "0") {
-                $this->analysisService->newPostIncrement();
-            }
+            // 新規記事・返信でインクリメント
+            $this->analysisService->newPostIncrement();
 
             // tweet
             $this->dispatch(new TwetterTweet($this->article));

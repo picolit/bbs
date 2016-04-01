@@ -57,8 +57,18 @@
         </div>
         <div class="file-selects">
             <div class="file-select">
-                {!! Form::file('file1', ['id' => 'file1']) !!}
-                {!! Form::file('file2', ['id' => 'file2']) !!}
+                <div style="float: left">
+                    {!! Form::file('file1', ['id' => 'file1']) !!}
+                    @if($errors->has('file1'))
+                        <div class="require">{{ $errors->first('file1') }}</div>
+                    @endif
+                </div>
+                <div style="float: left">
+                    {!! Form::file('file2', ['id' => 'file2']) !!}
+                    @if($errors->has('file2'))
+                        <div class="require">{{ $errors->first('file1') }}</div>
+                    @endif
+                </div>
             </div>
             <div class="post-btn-box">
                 <span class="post-cancel-btn" style="display: none;"><a class="post-btn">キャンセル</a></span>

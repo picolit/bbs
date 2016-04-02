@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use App\Service\SlackBot;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -47,8 +48,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if (config('app.debug'))
-        {
+        if (config('app.debug')) {
             $whoos = new \Whoops\Run;
             $whoos->pushHandler(new \Whoops\Handler\PrettyPageHandler());
 
@@ -57,6 +57,8 @@ class Handler extends ExceptionHandler
                 $e->getStatusCode(),
                 $e->getHeaders()
             );
+        } else if ($e->getCode() == Response::HTTP_INTERNAL_SERVER_ERROR) {
+            return response()->view('errors.500', []);
         }
         return parent::render($request, $e);
     }

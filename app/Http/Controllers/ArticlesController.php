@@ -65,6 +65,17 @@ class ArticlesController extends Controller
         $param['userId'] = $this->userService->getUserId($request);
         $param['articles'] = $this->articleService->get($param['conditions']);
 
+        //同じphpを起動している他のプロセスを探し
+        exec("ps aux|grep [a]rtisan", $output, $result);
+
+        $isActiveQueueListen = true;
+
+        if(count($output) === 0){
+            $isActiveQueueListen = false;
+        }
+
+        $param['isActiveQueueListen'] = $isActiveQueueListen;
+
         return view('article.index', $param);
     }
 

@@ -233,6 +233,6 @@ class ArticlesController extends Controller
             $this->nice->delete();
         }
 
-        return response();
+        return response('');
     }
 }

@@ -41,7 +41,7 @@
     @endif
     <div class="article-photo">
         @foreach($row->photos as $photoRow)
-            <a href="{{ $original_img_path.$photoRow->file_name}}">{!! Html::image($thumbnail_img_path.$photoRow->file_name, null,['style' => 'height:140px']) !!}</a>
+            <a href="{{ $original_img_path.$photoRow->file_name}}">{!! Html::image($thumbnail_img_path.$photoRow->file_name, null,['style' => 'height:130px']) !!}</a>
         @endforeach
     </div>
     <hr>

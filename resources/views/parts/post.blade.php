@@ -5,42 +5,17 @@
         {!! Form::hidden('parent_id', 0) !!}
 
         <div style="margin-bottom: 5px">
-            @if($errors->has('name'))
-                <span class="require">*</span>{!! Form::text('name', null, ['class' => 'error', 'placeholder' => 'お名前（必須）']) !!}
-            @else
-                <span class="require">*</span>{!! Form::text('name', null, ['class' => '', 'placeholder' => 'お名前（必須）']) !!}
-            @endif
-            @if($errors->has('title'))
-                <span class="require">*</span>{!! Form::text('title', null, ['class' => 'error', 'placeholder' => 'タイトル（必須）', 'style' => 'width:200px']) !!}
-            @else
-                <span class="require">*</span>{!! Form::text('title', null, ['class' => '', 'placeholder' => 'タイトル（必須）', 'style' => 'width:200px']) !!}
-            @endif
-            {!! Form::text('password', null, ['class' => '', 'placeholder' => 'パスワード', 'style' => 'width:145px']) !!}
+            <span class="require">*</span>{!! Form::text('name', null, ['id' => 'name', 'class' => 'input', 'placeholder' => 'お名前（必須）']) !!}
+            <span class="require">*</span>{!! Form::text('title', null, ['id' => 'title', 'class' => 'input', 'placeholder' => 'タイトル（必須）', 'style' => 'width:200px']) !!}
+            {!! Form::text('password', null, ['id' => 'password', 'class' => 'input', 'placeholder' => 'パスワード', 'style' => 'width:145px']) !!}
         </div>
         <div>
-            @if($errors->has('sex'))
-                <span class="require">*</span>{!! Form::select('sex', $sexList, null, ['class' => 'error']) !!}
-            @else
-                <span class="require">*</span>{!! Form::select('sex', $sexList) !!}
-            @endif
-            @if($errors->has('age'))
-                <span class="require">*</span>{!! Form::select('age', $ageList, null, ['class' => 'error']) !!}
-            @else
-                <span class="require">*</span>{!! Form::select('age', $ageList) !!}
-            @endif
-            @if($errors->has('prefectures'))
-                <span class="require">*</span>{!! Form::select('prefectures', $prefecturesList, null, ['class' => 'error']) !!}
-            @else
-                <span class="require">*</span>{!! Form::select('prefectures', $prefecturesList) !!}
-            @endif
-            {!! Form::email('mail', null, ['placeholder' => 'メールアドレス', 'style' => 'width:191px']) !!}
+            <span class="require">*</span>{!! Form::select('sex', $sexList, null, ['id' => 'sex', 'class' => 'input']) !!}
+            <span class="require">*</span>{!! Form::select('age', $ageList, null, ['id' => 'age', 'class' => 'input']) !!}
+            <span class="require">*</span>{!! Form::select('prefectures', $prefecturesList, null, ['id' => 'prefectures', 'class' => 'input']) !!}
+            {!! Form::email('mail', null, ['id' => 'mail', 'placeholder' => 'メールアドレス', 'style' => 'width:191px', 'class' => 'input']) !!}
         </div>
-        <div>
-        @if($errors->has('body'))
-            <span class="require">*</span>{!! Form::textarea('body', null, ['class' => 'body error', 'style'=>'width:100%']) !!}
-        @else
-            <span class="require">*</span>{!! Form::textarea('body', null, ['class' => 'body', 'style'=>'width:98%']) !!}
-        @endif
+        <div><span class="require">*</span>{!! Form::textarea('body', null, ['id' => 'body', 'class' => 'body input', 'style'=>'width:98%']) !!}
         </div>
         <div style="width: 100%;">
             <div style="width:100%; left: 0px; top: -3px; bottom: 0px">
@@ -58,13 +33,13 @@
         <div class="file-selects">
             <div class="file-select">
                 <div style="float: left">
-                    {!! Form::file('file1', ['id' => 'file1']) !!}
+                    {!! Form::file('file1', ['id' => 'file1', 'accept' => 'image/*', 'class' => 'input']) !!}
                     @if($errors->has('file1'))
                         <div class="require">{{ $errors->first('file1') }}</div>
                     @endif
                 </div>
                 <div style="float: left">
-                    {!! Form::file('file2', ['id' => 'file2']) !!}
+                    {!! Form::file('file2', ['id' => 'file2', 'class' => 'input']) !!}
                     @if($errors->has('file2'))
                         <div class="require">{{ $errors->first('file1') }}</div>
                     @endif
@@ -75,6 +50,8 @@
                 <span id="post"><a class="post-btn">投稿する</a></span>
             </div>
             <div class="file-thumbnails">
+                <canvas id="canvas1" style="display:none"></canvas>
+                <canvas id="canvas2" style="display:none"></canvas>
                 <span id="thumbnail1"></span>
                 <span id="thumbnail2"></span>
             </div>

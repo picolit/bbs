@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" manifest="app.appcache">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=1280px, initial-scale=1.0", user-scalable=yes">
     <meta name="description" content="趣味の合う人を全国区から検索できます。自分の趣味を選んで投稿してどんどんパートナーを探しましょう。使いやすくする為にどんどん機能拡張中です。通信内容を暗号化するSSLにも対応しております。">
     <meta name="keywords" content="{{ implode(', ', $keyword) }}">

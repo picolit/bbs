@@ -5,3 +5,4 @@ Homestead.yaml
 .idea/
 resources/node_modules
 .DS_Store
+Homestead/

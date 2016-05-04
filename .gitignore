@@ -6,3 +6,5 @@ Homestead.yaml
 resources/node_modules
 .DS_Store
 Homestead/
+bootstrap/cache/
+storage/

@@ -11,7 +11,6 @@ use App\Orm\Interest;
 use App\Orm\Nice;
 use App\Orm\Photo;
 use App\Service\ArticleService;
-use App\Http\Requests\ArticleNicePost;
 use App\Service\UserService;
 use Illuminate\Http\Request;
 
@@ -219,10 +218,10 @@ class ArticlesController extends Controller
      * エロいいねの削除
      *
      * @Post("/ajax/nice/delete", as="articles.deleteNice")
-     * @param ArticleNicePost $request
+     * @param ArticlesNicePost $request
      * @return string
      */
-    public function ajaxPostDeleteNice(ArticleNicePost $request)
+    public function ajaxPostDeleteNice(ArticlesNicePost $request)
     {
         $article_id = $request->input('id');
         $user_id = $request->input('user_id');

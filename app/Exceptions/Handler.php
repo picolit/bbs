@@ -59,6 +59,8 @@ class Handler extends ExceptionHandler
             );
         } else if ($e->getCode() == Response::HTTP_INTERNAL_SERVER_ERROR) {
             return response()->view('errors.500', []);
+        } else if ($e->getCode() == Response::HTTP_NOT_FOUND) {
+            return response()->view('errors.404', []);
         }
         return parent::render($request, $e);
     }

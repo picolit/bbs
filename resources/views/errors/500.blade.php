@@ -8,6 +8,7 @@
         <br>
         システムエラーが発生しました。時間をおいて再度お試しください。
         <br>
+	トップページでブラウザの更新してください。
         <br>
         <span>{!! link_to_route('articles.getIndex', 'トップへ戻る') !!}</span>
     </div>

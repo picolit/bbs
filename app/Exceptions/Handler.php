@@ -33,7 +33,8 @@ class Handler extends ExceptionHandler
     {
         if (!$e instanceof NotFoundHttpException) {
             $slack = new SlackBot();
-            $slack->post($e->getMessage() . PHP_EOL . print_r($e->getTrace()[0], true));
+#            $slack->post($e->getMessage() . PHP_EOL . print_r($e->getTrace()[0], true));
+            $slack->post($e->getMessage());
         }
 
         return parent::report($e);

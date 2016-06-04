@@ -60,10 +60,15 @@
         <div class="links">
             <ul>
                 @foreach($links as $link)
-                <li>
-                    {!! $link !!}
-                </li>
+                    <li>
+                        {!! $link !!}
+                    </li>
                 @endforeach
+                @foreach($linkList as $link)
+                    <li>
+                        {!! link_to("$link->url", "$link->name", ['target' => '_blank']) !!}
+                    </li>
+                    @endforeach
             </ul>
         </div>
     </div>

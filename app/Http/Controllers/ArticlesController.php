@@ -31,7 +31,7 @@ class ArticlesController extends Controller
     protected $photo;
     /** @var  Nice */
     protected $nice;
-
+    /** @var Interest */
     protected $interest;
 
     /**

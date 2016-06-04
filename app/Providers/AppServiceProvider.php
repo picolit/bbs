@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Orm\Interest;
+use App\Orm\LinkList;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $result = [];
+        $result['linkList'] = LinkList::all();
         $result['interestsList'] = Interest::all();
         $result['keyword'] = $result['interestsList']->pluck('name')->toArray();
         $result['sexList'] = Config::get('const.sex');

@@ -48,7 +48,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if (config('app.debug')) {
+        if (config('app.debug') and ! $request->ajax()) {
             $whoos = new \Whoops\Run;
             $whoos->pushHandler(new \Whoops\Handler\PrettyPageHandler());
 

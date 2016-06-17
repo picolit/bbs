@@ -1,3 +1,16 @@
+var isJSON = function(arg) {
+    arg = (typeof arg === "function") ? arg() : arg;
+    if (typeof arg  !== "string") {
+        return false;
+    }
+    try {
+        arg = (!JSON) ? eval("(" + arg + ")") : JSON.parse(arg);
+        return true;
+    } catch (e) {
+        return false;
+    }
+};
+
 $(document).ready(function(){
 
     window.onerror = errorHandler();
@@ -212,17 +225,23 @@ var sendImageBinary = function(blob1, blob2) {
             location.href = '/';
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
+            //console.log(textStatus);
             //console.log(JSON.parse(XMLHttpRequest.responseText));
             $('.input').each(function(idx, val) {
                 $(this).removeClass(('error'));
             });
 
-            $.each(JSON.parse(XMLHttpRequest.responseText), function(key, val) {
-                //console.log(key, val);
-                $('#' + key).addClass('error');
-            })
+            if (isJSON(XMLHttpRequest.responseText)) {
+                $.each(JSON.parse(XMLHttpRequest.responseText), function(key, val) {
+                    //console.log(key, val);
+                    $('#' + key).addClass('error');
+                })
 
-            $('#post').show();
+                $('#post').show();
+
+            } else {
+                console.log(XMLHttpRequest.responseText);
+            }
         }
     });
 };
@@ -276,3 +295,4 @@ function errorHandler () {
         });
     }
 }
+

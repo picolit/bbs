@@ -33,7 +33,7 @@ class ArticlesPostCreateRequest extends Request
             'res_id' => 'exists:articles',
             'name' => 'required|min:1',
             'title' => 'required|min:3|max:50',
-            'body' => 'required|min:10|max:1024',
+            'body' => 'required|min:10|max:1024|hasMultiByte',
             'file1' => 'image|max:4096', // php.iniのupload_max_filesize = 5Mへ
             'file2' => 'image|max:4096',
             'password' => 'alpha_num|max:16',

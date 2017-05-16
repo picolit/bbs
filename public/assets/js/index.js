@@ -277,7 +277,7 @@ function errorHandler () {
         formData.append('url', url);
         formData.append('line', line);
         formData.append('col', col);
-        // formData.append('error', error);
+        formData.append('error', error);
         formData.append('_token', document.querySelector('input[name="_token"]').value)
 
         $.ajax({
@@ -295,4 +295,3 @@ function errorHandler () {
         });
     }
 }
-

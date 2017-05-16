@@ -1,3 +1,10 @@
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+
 var isJSON = function(arg) {
     arg = (typeof arg === "function") ? arg() : arg;
     if (typeof arg  !== "string") {
@@ -37,7 +44,7 @@ $(document).ready(function(){
         $.ajax({
             type: "post",
             url: $niceLink.data('url'),
-            data: "_token=" + $("input[name='_token']").attr('value'),
+            data: "_token=" + $('meta[name="csrf-token"]').attr('content'),
             success: function() {
                 // ignore
             }
@@ -214,7 +221,6 @@ var sendImageBinary = function(blob1, blob2) {
         formData.append('file2', blob2);
     }
 
-    formData.append('_token', document.querySelector('input[name="_token"]').value)
     $.ajax({
         type: 'POST',
         url: '/',
@@ -278,7 +284,7 @@ function errorHandler () {
         formData.append('line', line);
         formData.append('col', col);
         formData.append('error', error);
-        formData.append('_token', document.querySelector('input[name="_token"]').value)
+        formData.append('_token', $('meta[name="csrf-token"]').attr('content'))
 
         $.ajax({
             type: "post",

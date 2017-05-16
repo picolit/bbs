@@ -10,6 +10,7 @@
     <meta name="keywords" content="{{ implode(', ', $keyword) }}">
     <meta name="author" content="peach-x">
     <meta http-equiv="content-language" content="ja">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <title>アダルト地域別コミュニケーションサイト | 地域別SNS　Peach-X</title>
 
